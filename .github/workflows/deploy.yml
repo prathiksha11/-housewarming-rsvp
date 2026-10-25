@@ -6,7 +6,7 @@ on:
   workflow_dispatch:
 
 permissions:
-  contents: read
+  contents: write
   pages: write
   id-token: write
 
@@ -38,6 +38,19 @@ jobs:
           test -s dist/assets/house-illustration.webp
           test -s dist/assets/folk-arch.webp
           test -s dist/script.js
+          test -s dist/rsvp.js
+
+      - name: Keep artwork in the repository
+        run: |
+          if [ ! -s assets/house-illustration.webp ]; then
+            mkdir -p assets
+            cp dist/assets/* assets/
+            git config user.name "github-actions[bot]"
+            git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+            git add assets/
+            git commit -m "Store housewarming artwork in GitHub" || true
+            git push || echo "Art generation succeeded; saving sources will need a later commit."
+          fi
 
       - name: Configure Pages
         uses: actions/configure-pages@v5
