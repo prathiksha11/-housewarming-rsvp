@@ -1,0 +1,52 @@
+name: Deploy Housewarming Invitation
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: github-pages
+  cancel-in-progress: true
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Check out invitation
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Build standalone GitHub Pages site
+        run: |
+          python -m pip install --disable-pip-version-check "Pillow==11.3.0"
+          mkdir -p dist/assets
+          cp index.html styles.css script.js config.js robots.txt .nojekyll dist/
+          python scripts/generate_assets.py
+          test -s dist/assets/house-illustration.webp
+          test -s dist/assets/folk-arch.webp
+          test -s dist/script.js
+
+      - name: Configure Pages
+        uses: actions/configure-pages@v5
+
+      - name: Upload site
+        uses: actions/upload-pages-artifact@v4
+        with:
+          path: dist
+
+      - name: Publish Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
