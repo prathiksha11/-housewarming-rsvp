@@ -9,6 +9,16 @@ SOURCE = "https://d2ol7oe51mr4n9.cloudfront.net/user_3J38HEBAGYQ4cmA8faRDj18RI2a
 
 destination = Path("dist/assets")
 destination.mkdir(parents=True, exist_ok=True)
+# First successful deployment saves the approved artwork in this repository.
+# Later builds use those self-hosted assets and no longer need the source CDN.
+saved = Path("assets")
+if (saved / "house-illustration.webp").is_file():
+    import shutil
+    for asset in saved.iterdir():
+        if asset.is_file():
+            shutil.copy2(asset, destination / asset.name)
+    print("Reused", len(list(destination.iterdir())), "self-hosted artworks.")
+    raise SystemExit(0)
 request = urllib.request.Request(SOURCE, headers={"User-Agent":"Housewarming-RSVP-GitHub-Pages/1.0"})
 with urllib.request.urlopen(request, timeout=45) as response:
     original = Image.open(BytesIO(response.read())).convert("RGB")
