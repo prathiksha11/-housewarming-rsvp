@@ -35,7 +35,7 @@ img{display:block;max-width:100%;height:auto}
 .herald span:first-child,.herald span:last-child{font-size:15px}
 h1,h2,h3,p{overflow-wrap:break-word}
 .hero h1{font:500 clamp(55px,8.4vw,112px)/.87 var(--serif);letter-spacing:-.052em;max-width:950px;margin:0 auto;padding:0 0 .14em}
-.hero h1 em{display:block;font-weight:500;color:#f1c47b;letter-spacing:-.047em}
+.hero h1 em{display:block;font-weight:500;color:#f1c47b;letter-spacing:-.047em;font-size:.86em}
 .hero-intro>p{font:500 clamp(19px,2.8vw,28px)/1.15 var(--serif);margin:12px 0 26px;color:#f2e8d3}
 .hero-intro strong{font-weight:700}
 .theatre{position:relative;max-width:790px;margin:0 auto;text-align:center}
