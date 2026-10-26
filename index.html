@@ -1,142 +1,296 @@
 <!doctype html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta name="color-scheme" content="light" />
-  <meta name="theme-color" content="#f6eedf" />
-  <meta name="description" content="A new chapter begins. You're warmly invited to celebrate our housewarming on Saturday, November 7, 2026, in Meridian, Idaho." />
-  <meta name="robots" content="noindex, nofollow" />
-  <meta property="og:type" content="website" />
-  <meta property="og:title" content="A New Chapter Begins | Housewarming Invitation" />
-  <meta property="og:description" content="A little home, a lot of love. November 7, 2026 · Dinner at 6:00 PM · Meridian, Idaho." />
-  <meta property="og:image" content="https://prathiksha11.github.io/-housewarming-rsvp/assets/social-preview.jpg" />
-  <meta property="og:url" content="https://prathiksha11.github.io/-housewarming-rsvp/" />
-  <meta name="twitter:card" content="summary_large_image" />
-  <link rel="icon" type="image/png" href="assets/favicon.png" />
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600&family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="styles.css?v=20261025b" />
-  <link rel="stylesheet" href="experience.css?v=20261026b" />
-  <title>A New Chapter Begins | Housewarming Invitation</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#14243a"><meta name="color-scheme" content="light">
+<meta name="robots" content="noindex,nofollow">
+<meta name="description" content="You're invited to celebrate our new home! Saturday, November 7, 2026 at 6 PM, Meridian, Idaho.">
+<meta property="og:type" content="website">
+<meta property="og:title" content="A new chapter begins at home · You're invited">
+<meta property="og:description" content="Come make our new house feel like home. Saturday, November 7 · Dinner at 6 PM.">
+<meta property="og:image" content="https://prathiksha11.github.io/-housewarming-rsvp/assets/social-preview.jpg">
+<title>A New Chapter · Housewarming Invitation</title>
+<link rel="icon" href="assets/favicon.png" type="image/png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600&family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{--ink:#172a3d;--navy:#14243a;--navy2:#233b56;--paper:#fff6e2;--cream:#fffaf0;--red:#a72d3d;--wine:#852333;--gold:#e2bb70;--gold2:#bf8b49;--leaf:#2c5748;--line:#ddcaa8;--serif:'Cormorant Garamond',Georgia,serif;--sans:'DM Sans',Arial,sans-serif;color-scheme:light}
+*,*::before,*::after{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:26px}
+body{margin:0;background:var(--navy);font-family:var(--sans);color:var(--ink);overflow-x:hidden;-webkit-font-smoothing:antialiased}
+button,input,textarea,select{font:inherit}
+button{cursor:pointer}
+[hidden]{display:none!important}
+a{color:inherit}
+img{max-width:100%;display:block}
+:focus-visible{outline:3px solid #a56f35;outline-offset:3px}
+.skip{position:absolute;top:-100px;left:15px;background:#fff;padding:12px;z-index:100}
+.skip:focus{top:10px}
+.paper-grain{position:fixed;inset:0;z-index:40;pointer-events:none;opacity:.09;background-image:url('assets/paper-grain.webp');mix-blend-mode:multiply}
+.progress{position:fixed;top:0;left:0;height:4px;background:var(--gold);width:0;z-index:99;pointer-events:none;box-shadow:0 0 12px rgba(226,187,112,.5)}
+.cover{position:relative;isolation:isolate;min-height:100svh;padding:0 18px 34px;display:flex;flex-direction:column;align-items:center;overflow:hidden;color:#fff3d9;background:radial-gradient(ellipse at 50% 40%,#294762 0%,#152b43 57%,#101e31 100%)}
+.cover::before,.cover::after{content:"";position:absolute;inset:8px;pointer-events:none;border:1px solid rgba(231,192,117,.55);z-index:-1}
+.cover::after{inset:14px;border:1px solid rgba(231,192,117,.22)}
+.sky{position:absolute;inset:0;z-index:-2;overflow:hidden;pointer-events:none;background-image:radial-gradient(2px 2px at 15% 15%,#ffe6ad 88%,transparent),radial-gradient(2px 2px at 70% 10%,#ffdc96 80%,transparent),radial-gradient(2px 2px at 85% 33%,#ffc97b 80%,transparent),radial-gradient(2px 2px at 32% 39%,#ffe6b2 80%,transparent),radial-gradient(2px 2px at 60% 63%,#ffffff 80%,transparent)}
+.sky::before{content:"";position:absolute;width:450px;height:450px;border:1px solid rgba(239,199,128,.1);border-radius:50%;left:50%;top:18%;transform:translateX(-50%);box-shadow:0 0 0 55px rgba(239,199,128,.025),0 0 0 130px rgba(239,199,128,.025)}
+.cover-head{width:100%;max-width:920px;display:flex;justify-content:space-between;align-items:center;border-bottom:1px solid rgba(226,187,112,.28);padding:25px 7px 13px;gap:15px;z-index:2}
+.mark{font-family:var(--serif);font-size:24px;font-weight:600;display:inline-flex;align-items:center;gap:10px;line-height:1;color:#fae3b7}
+.mark-icon{border:1px solid rgba(236,194,111,.75);width:34px;height:34px;border-radius:50%;display:grid;place-items:center;font-size:21px;color:var(--gold)}
+.head-right{font-size:9px;text-transform:uppercase;letter-spacing:.2em;color:#ebcb8e;font-weight:700;white-space:nowrap}
+.cover-center{width:100%;max-width:750px;display:flex;flex-direction:column;align-items:center;text-align:center;margin:auto 0;position:relative;padding:22px 0 12px}
+.eyebrow{font:700 10px/1.5 var(--sans);letter-spacing:.31em;text-transform:uppercase}
+.cover-eyebrow{color:#edc27d;margin:8px 0 12px}
+.cover h1{font:500 clamp(56px,12.3vw,91px)/.89 var(--serif);letter-spacing:-.045em;margin:0 0 14px;text-wrap:balance;text-shadow:0 4px 24px #010d1f5a}
+.cover h1 em{display:block;color:#f6cd89;font-weight:500;font-style:italic;line-height:1.05}
+.cover-subtitle{font:400 15px/1.6 var(--sans);color:#eadfcb;margin:0 auto 17px;max-width:500px}
+.cover-postcard{width:min(100%,545px);position:relative;padding:9px;background:#fff5d9;border:1px solid #e2bd7b;outline:2px solid #c79653;outline-offset:-5px;box-shadow:0 30px 70px #0007,0 0 38px #ecc68e16;transform:rotate(-1.25deg);transition:transform .6s cubic-bezier(.2,.8,.2,1),box-shadow .65s;margin:7px auto 18px}
+.cover-postcard::before,.cover-postcard::after{content:"✿";position:absolute;font-size:18px;color:var(--red);top:9px;z-index:1}
+.cover-postcard::before{left:13px}.cover-postcard::after{right:13px}
+.cover-postcard.lit{transform:rotate(0) scale(1.025);box-shadow:0 28px 80px #0006,0 0 60px #ffbd6299}
+.postcard-text{color:#992e38;font:700 10px var(--sans);letter-spacing:.2em;margin:8px 0 11px;text-transform:uppercase}
+.cover-postcard .house{width:100%;height:auto;max-height:275px;object-fit:contain;mix-blend-mode:normal;filter:saturate(1.03);transition:filter .6s}
+.cover-postcard.lit .house{filter:brightness(1.12) saturate(1.2)}
+.light-orb{position:absolute;left:44%;top:52%;width:13%;aspect-ratio:1;border-radius:50%;opacity:0;background:radial-gradient(circle,#ffe1a4b3,transparent 75%);transition:opacity .5s;pointer-events:none}
+.cover-postcard.lit .light-orb{opacity:1;animation:orbPulse 2.8s ease-in-out infinite alternate}
+.home-line{font:italic 500 19px/1.2 var(--serif);color:#944340;margin:4px auto 4px}
+.time-capsules{display:flex;align-items:center;justify-content:center;gap:11px;color:#fff1d5;letter-spacing:.12em;font-size:11px;font-weight:700;margin:4px 0 17px}
+.time-capsules i{font-size:11px;color:var(--gold);font-style:normal}
+.cover-actions{width:100%;display:flex;align-items:center;justify-content:center;gap:9px;flex-wrap:wrap}
+.open-button{border:1px solid #e6b267;color:#162d42;background:#f6cd85;font:700 12px var(--sans);letter-spacing:.07em;padding:17px 23px;min-height:54px;box-shadow:0 5px 0 #a46f42;display:inline-flex;gap:14px;align-items:center;justify-content:center;transition:transform .2s,background .2s;white-space:nowrap}
+.open-button:hover{background:#ffe0a4;transform:translateY(-2px)}
+.open-button:active{transform:translateY(3px);box-shadow:0 2px 0 #a46f42}
+.light-button{border:1px solid #dbb57688;background:#ffffff0b;color:#f4dbab;font:600 11px var(--sans);letter-spacing:.02em;padding:14px 16px;min-height:51px;transition:background .2s}
+.light-button:hover,.light-button[aria-pressed="true"]{background:#ffe3a426}
+.silverline{font-size:10px;letter-spacing:.19em;text-transform:uppercase;color:#dac99f;margin:28px auto 3px}
+.cover-flower{position:absolute;top:20%;font-size:35px;opacity:.3;color:#e0b36b;animation:floatPetal 9s ease-in-out infinite;pointer-events:none}
+.cover-flower.left{left:4%;transform:rotate(-18deg)}.cover-flower.right{right:5%;animation-delay:-3s;transform:rotate(19deg)}
+.invite-body{position:relative;background:#fff8e9;background-image:radial-gradient(circle at 10% 24%,#ffedcd 0,transparent 35%),radial-gradient(circle at 87% 55%,#f8e9c8 0,transparent 40%);padding:60px 20px 0}
+.invite-body::before{content:"";position:absolute;top:0;left:0;right:0;height:14px;background:repeating-linear-gradient(90deg,#9d2938 0 15px,#cf9b52 15px 18px,#fff0d2 18px 21px,#cf9b52 21px 24px)}
+.section-wrap{max-width:1050px;margin:0 auto}
+.story-title{text-align:center;max-width:620px;margin:0 auto 22px}
+.story-title .eyebrow{color:var(--red)}
+.story-title h2{font:500 clamp(49px,10vw,74px)/.95 var(--serif);letter-spacing:-.045em;margin:10px 0 14px}
+.story-title h2 em{color:var(--wine);font-weight:500}
+.story-title p{font-size:14px;line-height:1.65;color:#665b4e;margin:0 auto;max-width:430px}
+.story-strip{display:flex;align-items:center;justify-content:center;gap:7px;margin:21px auto 22px;color:var(--wine)}
+.story-strip::before,.story-strip::after{content:"";display:block;width:76px;height:1px;background:#cfab76}
+.swipe-label{text-align:center;font-size:11px;letter-spacing:.12em;color:#875b41;text-transform:uppercase;margin:0 0 13px;font-weight:700}
+.card-window{overflow:hidden;max-width:780px;margin:0 auto}
+.card-track{display:flex;gap:14px;overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-width:none;padding:8px 10px 21px;touch-action:pan-x pan-y;overscroll-behavior-x:contain;-webkit-overflow-scrolling:touch}
+.card-track::-webkit-scrollbar{display:none}
+.story-card{position:relative;scroll-snap-align:center;flex:0 0 min(78vw,370px);min-height:340px;overflow:hidden;border:1px solid #c48d59;box-shadow:0 7px 18px #402a1c17;padding:25px 23px;display:flex;flex-direction:column;align-items:flex-start;justify-content:space-between;isolation:isolate}
+.story-card::before{content:"";position:absolute;inset:7px;border:1px solid #ffffff88;pointer-events:none}
+.story-card .card-top{font:700 10px var(--sans);letter-spacing:.2em;text-transform:uppercase;position:relative;z-index:1}
+.card-day{background:linear-gradient(145deg,#9e2d3d,#711d2e);color:#fff2d7}
+.card-time{background:linear-gradient(145deg,#143b42,#1e5555);color:#fceac8}
+.card-place{background:linear-gradient(145deg,#e8c782,#f5e4b9);color:#223b40}
+.card-big{font:500 clamp(63px,13vw,100px)/.82 var(--serif);letter-spacing:-.06em;position:relative;z-index:1}
+.card-big small{display:block;font:700 15px var(--sans);letter-spacing:.26em;margin-top:25px}
+.card-time .card-big{font-size:65px;line-height:.95}
+.card-place .card-big{font-size:54px;line-height:.95}
+.card-desc{font-size:13px;line-height:1.6;margin:12px 0 17px;max-width:250px;position:relative;z-index:1}
+.card-action{display:inline-block;font-size:11px;letter-spacing:.07em;text-decoration:none;border:1px solid currentColor;padding:11px 15px;background:transparent;color:inherit;font-weight:700;position:relative;z-index:1}
+.card-action:hover{background:#ffffff22}
+.folk-sun{position:absolute;right:-10px;bottom:-63px;font-size:210px;line-height:1;opacity:.14;color:#fbe5b8;pointer-events:none;font-family:Georgia}
+.card-controls{display:flex;gap:15px;align-items:center;justify-content:center;padding-bottom:14px}
+.round-arrow{border:1px solid #d1b58e;background:#fff3db;color:var(--wine);width:38px;height:38px;border-radius:50%;font-size:21px;display:grid;place-items:center}
+.round-arrow:hover{background:#f1d7ae}
+.dots{display:flex;gap:7px}
+.dots button{width:7px;height:7px;background:#cfb28b;border:0;border-radius:50%;padding:0}
+.dots button[aria-current="true"]{width:25px;border-radius:20px;background:#9b303b}
+.sharing{display:flex;align-items:center;justify-content:center;gap:10px;margin:4px 0 56px;flex-wrap:wrap}
+.sharing button{border:0;border-bottom:1px solid #c79f6e;background:transparent;color:#8b2936;padding:9px 5px;font-size:12px;font-weight:700}
+.handwritten{text-align:center;border-top:1px solid #e4cea7;border-bottom:1px solid #e4cea7;padding:28px 10px;margin:0 auto 62px;max-width:780px}
+.handwritten img{height:75px;object-fit:contain;margin:0 auto 9px}
+.handwritten p{font:italic 500 30px/1.1 var(--serif);color:#8c3540;margin:0}
+.rsvp-section{max-width:890px;margin:0 auto;padding:0 0 67px;scroll-margin-top:26px}
+.rsvp-intro{text-align:center;margin:0 auto 24px;max-width:660px}
+.rsvp-intro .eyebrow{color:var(--red)}
+.rsvp-intro h2{font:500 clamp(55px,12vw,85px)/.89 var(--serif);letter-spacing:-.04em;margin:10px 0 14px}
+.rsvp-intro h2 em{display:block;font-style:italic;color:var(--wine)}
+.rsvp-intro p{font:400 14px/1.65 var(--sans);color:#695c4e;margin:0 auto;max-width:390px}
+.rsvp-decoration{max-width:540px;width:100%;margin:15px auto 17px;mix-blend-mode:normal;height:auto}
+.rsvp-card{max-width:620px;margin:0 auto;padding:clamp(23px,4vw,43px);background:#fffef5;border:1px solid #b98c52;box-shadow:0 0 0 5px #fff7e5,0 0 0 7px #d5ad6e,0 12px 36px #422c1a24}
+.form-heading{text-align:center;border-bottom:1px solid var(--line);padding-bottom:20px;margin-bottom:25px}
+.form-heading h3{font:600 45px/.96 var(--serif);letter-spacing:-.03em;margin:9px 0 8px}
+.form-heading p{font-size:13px;color:#715c4b;margin:0}
+.form-motif{font-size:28px;color:var(--wine)}
+.form-field{margin-bottom:20px}
+.form-field label,.form-attendance legend{display:block;margin:0 0 8px;font-size:12px;font-weight:700;color:#314355}
+.form-field input,.form-field select,.form-field textarea{width:100%;min-height:50px;border-radius:0;border:1px solid #d2bb95;background:#fffdfa;color:var(--ink);padding:12px 14px;font-size:16px;outline:0}
+.form-field textarea{min-height:98px;resize:vertical}
+.form-field input:focus,.form-field select:focus,.form-field textarea:focus{border-color:#932b39;box-shadow:0 0 0 3px #b46b6222}
+.form-field input::placeholder,.form-field textarea::placeholder{color:#837d73}
+.optional{color:#807162;font-weight:400}
+.req{color:var(--red)}
+.honeypot{display:none}
+.form-attendance{padding:0;margin:0 0 22px;border:0}
+.attendance-options{display:grid;grid-template-columns:1fr 1fr;gap:9px}
+.attendance-choice{min-height:116px;padding:15px 11px;border:1px solid #d2bb95;background:#fff7e8;display:flex;flex-direction:column;align-items:flex-start;gap:5px;position:relative;transition:transform .2s,border-color .2s,background .2s}
+.attendance-choice:has(input:checked){border:2px solid #9d283b;background:#fbe9e1;transform:translateY(-2px);padding:14px 10px}
+.attendance-choice input{position:absolute;right:10px;top:9px;accent-color:#a02c3b}
+.attendance-choice .choice-art{font-size:26px;color:var(--wine);font-family:Georgia;line-height:1}
+.choice-heading{font-weight:700;font-size:11px;color:var(--ink);margin-top:7px}
+.attendance-choice small{color:#6f6356;font-size:11px}
+.attendance-extra{animation:foldDown .25s ease-out}
+.form-feedback{background:#fff0e8;border-left:3px solid var(--red);color:#872d38;padding:13px;margin:10px 0;font-size:12px}
+.form-submit{min-height:57px;width:100%;display:flex;align-items:center;justify-content:space-between;padding:15px 24px;background:var(--red);color:white;border:0;font-size:12px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;box-shadow:3px 4px 0 #c89b60}
+.form-submit:disabled{opacity:.6}
+.form-privacy{font-size:11px;text-align:center;line-height:1.6;color:#756757;margin:17px 0 0}
+.success-state{text-align:center;position:relative;padding:22px 2px}
+.success-symbol{font-size:45px;color:var(--wine)}
+.success-state h3{font:600 52px var(--serif);line-height:.9;margin:8px 0;color:var(--ink)}
+.success-state p{color:#65584c;line-height:1.7;font-size:14px}
+.secondary-button{padding:13px 19px;background:#fff5e1;color:var(--wine);border:1px solid var(--wine);font-size:12px}
+.close-note{color:var(--navy);background:#fff7e5;border:1px solid #d0aa6d;width:42px;height:42px;position:absolute;right:16px;top:16px;border-radius:50%;font-size:25px;display:grid;place-items:center}
+.letter-dialog{border:0;padding:0;background:transparent;max-width:min(520px,94vw);max-height:91dvh;overflow:auto;box-shadow:0 40px 110px #0008}
+.letter-dialog::backdrop{background:#081b2bd4;backdrop-filter:blur(5px)}
+.letter-dialog[open]{animation:envelopeAppear .44s cubic-bezier(.18,.8,.23,1)}
+.letter-inner{position:relative;padding:43px 27px 35px;outline:5px double #c69958;outline-offset:-15px;border:2px solid #8d2938;background:#fff1d3;text-align:center}
+.letter-inner::before{content:"";position:absolute;inset:22px;pointer-events:none;border:1px solid #c4a173}
+.letter-inner>img{max-width:80%;height:115px;object-fit:contain;margin:0 auto 5px}
+.letter-inner .eyebrow{color:var(--wine)}
+.letter-inner h2{font:600 clamp(51px,11vw,67px)/.88 var(--serif);letter-spacing:-.04em;color:var(--navy);margin:20px auto 20px}
+.letter-inner h2 em{display:block;color:var(--wine);font-weight:500}
+.letter-inner p{font:400 15px/1.7 var(--sans);color:#695647;margin:0 auto 16px;max-width:360px}
+.letter-meta{margin:13px auto 24px;border-top:1px solid #cead79;border-bottom:1px solid #cead79;padding:15px 0;max-width:340px;color:#862d39;font:700 12px/1.85 var(--sans);letter-spacing:.05em}
+.letter-inner .letter-accept{display:block;margin:0 auto;background:var(--wine);color:white;border:0;padding:17px 28px;font-weight:700;font-size:12px;letter-spacing:.08em}
+.letter-signoff{font:italic 600 26px var(--serif);color:var(--wine);margin-top:15px}
+.endcap{text-align:center;background:#8d2738;color:#ffefd1;padding:40px 20px 24px;border-top:5px double #dfb776}
+.endcap .flower-footer{width:min(450px,90%);height:85px;object-fit:contain;margin:0 auto 5px;border-radius:6px}
+.endcap h2{font:500 61px/.9 var(--serif);margin:20px 0 12px}
+.endcap h2 em{color:#ffcf8c}
+.endcap p{font:italic 500 22px var(--serif);margin:0 0 28px}
+.endcap .fineprint{font:500 10px var(--sans);letter-spacing:.14em;border-top:1px solid #daa86d;margin-top:26px;padding-top:17px}
+.mobile-dock{position:fixed;z-index:30;left:14px;right:14px;bottom:max(12px,env(safe-area-inset-bottom));display:flex;justify-content:space-between;align-items:center;gap:10px;max-width:520px;margin:auto;padding:9px 9px 9px 17px;background:#15334af2;border:1px solid #deb56e;color:#ffe4b6;box-shadow:0 8px 28px #0004;transform:translateY(150%);transition:transform .35s ease;pointer-events:none}
+.mobile-dock.is-visible{transform:translateY(0);pointer-events:auto}
+.mobile-dock span{font:600 13px var(--serif);line-height:1.05}.mobile-dock small{display:block;font:500 9px var(--sans);color:#d4bc94;margin-top:5px}
+.mobile-dock a{background:#f3d19b;border:0;color:#152e41;text-decoration:none;padding:14px 19px;font-size:11px;font-weight:700;white-space:nowrap}
+.decor-petal{position:absolute;pointer-events:none;z-index:1;color:#ffdda8;opacity:.5;top:20%;animation:driftPetal 12s linear infinite}
+@keyframes driftPetal{0%{transform:translate3d(0,-20px,0) rotate(0);opacity:0}20%{opacity:.6}80%{opacity:.55}100%{transform:translate3d(var(--drift),450px,0) rotate(330deg);opacity:0}}
+@keyframes floatPetal{50%{margin-top:20px;opacity:.48}}
+@keyframes orbPulse{to{transform:scale(1.25);opacity:.7}}
+@keyframes envelopeAppear{from{opacity:0;transform:translateY(45px) scale(.89)}to{opacity:1;transform:translateY(0) scale(1)}}
+@keyframes foldDown{from{transform:translateY(-8px);opacity:.5}to{transform:translateY(0);opacity:1}}
+@media(min-width:820px){
+.cover{padding:0 30px 50px}
+.cover-center{max-width:1000px;display:grid;grid-template-columns:1fr 1fr;text-align:left;gap:13px 62px;padding:30px 0;align-content:center}
+.cover-eyebrow,.cover h1,.cover-subtitle,.time-capsules,.cover-actions,.silverline{grid-column:1}
+.cover-eyebrow{align-self:end}
+.cover h1{font-size:clamp(68px,7vw,101px);margin-bottom:0}
+.cover-subtitle{margin:0}
+.cover-postcard{grid-column:2;grid-row:1 / span 6;align-self:center;width:100%;max-width:550px}
+.time-capsules,.cover-actions{justify-content:flex-start}
+.silverline{margin:0}
+.story-card{flex-basis:245px;min-height:320px}
+.card-window{max-width:1040px}.card-track{justify-content:center}
+.card-controls{display:none}
+.story-title{margin-bottom:30px}
+.rsvp-section{padding-bottom:98px}
+}
+@media(max-width:600px){
+.cover{padding:0 17px 30px}
+.cover-head{padding:17px 2px 13px}
+.mark{font-size:21px}
+.head-right{font-size:8px}
+.cover-center{padding:12px 0 11px;margin:auto 0}
+.cover-eyebrow{font-size:9px;margin-bottom:11px}
+.cover h1{font-size:clamp(47px,12.1vw,69px);line-height:.91;margin-bottom:12px}
+.cover-subtitle{font-size:12px;line-height:1.55;margin-bottom:15px}
+.cover-postcard{max-width:400px;margin-bottom:16px;padding:7px}
+.cover-postcard .house{max-height:220px}
+.postcard-text{font-size:8px;margin:8px 0}
+.home-line{font-size:17px}
+.time-capsules{font-size:10px;margin-bottom:15px}
+.open-button{min-height:51px;padding:15px 21px}
+.light-button{padding:12px 14px;font-size:10px;min-height:49px}
+.silverline{margin:21px auto 0}
+.invite-body{padding:53px 16px 0}
+.story-title h2{font-size:54px}
+.story-title p{font-size:13px}
+.story-card{min-height:324px;flex-basis:min(81vw,335px)}
+.story-card .card-top{font-size:9px}
+.card-day .card-big{font-size:90px}
+.card-time .card-big{font-size:62px}
+.card-place .card-big{font-size:52px}
+.handwritten p{font-size:26px}
+.form-heading h3{font-size:43px}
+.attendance-choice{min-height:120px}
+.letter-dialog{width:calc(100% - 22px)}
+.letter-inner{padding:40px 23px 30px}
+.letter-inner>img{height:91px}
+}
+@media(max-width:360px){
+.cover h1{font-size:44px}
+.cover-actions{gap:8px}
+.open-button{font-size:11px}
+.light-button{font-size:10px}
+.time-capsules{font-size:9px}
+.attendance-choice{padding:12px 8px}
+.choice-heading{font-size:10px}
+}
+@media(prefers-reduced-motion:reduce){
+html{scroll-behavior:auto}
+*,*::before,*::after{animation-duration:.001ms!important;transition-duration:.001ms!important}
+}
+</style>
 </head>
 <body>
-  <a class="skip-link" href="#main">Skip to invitation</a>
-  <div class="site-shell" id="top">
-    <div class="outer-ornament ornament-top" aria-hidden="true"><div class="ornament-dots"></div></div>
-    <div class="outer-edge left-edge" aria-hidden="true"></div>
-    <div class="outer-edge right-edge" aria-hidden="true"></div>
 
-    <header class="nav-bar">
-      <a class="brand" href="#top" aria-label="Back to top"><span class="brand-seal">✽</span><span class="brand-text">a new chapter <small>BEGINS HERE</small></span></a>
-      <nav class="nav-links" aria-label="Main navigation">
-        <a class="nav-desktop" href="#details">The celebration</a>
-        <a class="nav-desktop" href="#location">The address</a>
-        <a class="nav-cta" href="#rsvp">Kindly RSVP <span aria-hidden="true">↗</span></a>
-      </nav>
-    </header>
-
-    <main id="main">
-      <section class="hero" aria-labelledby="hero-title">
-        <div class="arch-picture" aria-hidden="true"><img src="assets/folk-arch.webp" alt="" /></div>
-        <div class="hero-inner">
-          <div class="hero-story">
-            <div class="eyebrow appear-first"><span class="little-diamond" aria-hidden="true">✦</span> YOU ARE WARMLY INVITED <span class="little-diamond" aria-hidden="true">✦</span></div>
-            <h1 id="hero-title" class="hero-title"><span class="title-line title-one">A new chapter</span><span class="title-line title-two"><em>begins at home.</em></span></h1>
-            <div class="red-flourish" aria-hidden="true"><span></span><i>❀</i><span></span></div>
-            <p class="hero-subheading">A house becomes a home when it is filled with the people we love.</p>
-            <p class="hero-copy">With warmth in our hearts, we invite you to celebrate this beautiful new beginning. Come make our new house feel like home.</p>
-            <div class="hero-buttons">
-              <a class="primary-button" href="#rsvp"><span>RSVP to celebrate</span><span class="primary-arrow" aria-hidden="true">↗</span></a>
-              <button type="button" class="letter-cta" id="open-letter" aria-haspopup="dialog" aria-controls="invitation-letter"><span class="envelope-icon" aria-hidden="true"></span><span class="letter-copy-mini"><strong>Open a little note</strong><small>Tap to unfold your invitation</small></span><span class="letter-cta-arrow" aria-hidden="true">↗</span></button>
-            </div>
-          </div>
-          <div class="hero-art">
-            <div class="stars-layer" aria-hidden="true"><i>✦</i><i>✦</i><i>✧</i><i>✦</i></div>
-            <div class="art-card" id="art-card">
-              <div class="art-card-outline" aria-hidden="true"></div>
-              <div class="art-title-top"><span>✣</span><span>OUR LITTLE CORNER OF THE WORLD</span><span>✣</span></div>
-              <figure class="house-figure"><img src="assets/house-illustration.webp" alt="Hand-painted Bengali Pattachitra-inspired artwork of our new two-story home, with banana plants, flowers and a glowing doorway" width="1400" height="583" /></figure>
-              <div class="art-under"><span>✦</span><span>HOME IS WHERE WE GATHER</span><span>✦</span></div>
-            </div>
-            <button class="light-home-button" id="light-home" type="button" aria-pressed="false" aria-label="Tap to light up our home"><span aria-hidden="true">✦</span><span>Tap to light up our home</span></button>
-            <span class="house-light-message" id="house-light-message" role="status" aria-live="polite"></span>
-            <div class="floating-date" aria-label="Saturday November 7, 2026"><span class="floating-month">NOV</span><span class="floating-day">07</span><span class="floating-year">2026</span></div>
-          </div>
-        </div>
-        <div class="hero-signoff"><span class="tiny-sun" aria-hidden="true">☼</span><p>A little space for all our favourite people.</p><span class="tiny-sun" aria-hidden="true">☼</span></div>
-
-      </section>
-
-      <dialog class="invitation-modal" id="invitation-letter" aria-labelledby="welcome-title" aria-modal="true">
-        <div class="note-inner">
-          <div class="note-topline"><span>✺ &nbsp; A LITTLE NOTE FOR YOU</span><button class="note-close" id="close-letter" type="button" aria-label="Close invitation">×</button></div>
-          <img class="note-arch" src="assets/folk-arch.webp" alt="" />
-          <span class="note-seal" aria-hidden="true">✽</span>
-          <h2 id="welcome-title">The door is open.<br /><em>Come on in.</em></h2>
-          <p>Every home has a story, and the happiest chapters are written with the people we love. We'd be delighted to celebrate this one with you.</p>
-          <div class="note-event-line"><span>✦ SATURDAY, NOV 7 ✦</span><span>DINNER AT 6:00 PM</span></div>
-          <div class="note-actions"><a href="#rsvp" class="note-primary">Kindly RSVP ↗</a><a href="#details" class="note-secondary">See the details ↓</a></div>
-        </div>
-      </dialog>
-
-      <div class="event-ribbon" aria-label="Event quick details">
-        <span>Saturday, 07 November</span><i aria-hidden="true">✦</i><span>Dinner from 6:00 PM</span><i aria-hidden="true">✦</i><span>Meridian, Idaho</span>
-      </div>
-
-      <section class="peek-section" aria-label="Swipeable housewarming highlights">
-        <div class="peek-header"><div><h2 class="peek-heading">A little <em>peek inside.</em></h2><p class="peek-hint">Swipe through the little details ↔</p></div><span class="peek-position" id="peek-position">01 / 03</span></div>
-        <div class="peek-window" id="peek-window" tabindex="0" role="region" aria-roledescription="carousel" aria-label="Event highlights. Swipe left for the next card.">
-          <div class="peek-track">
-            <article class="peek-card peek-date" role="group" aria-roledescription="slide" aria-label="1 of 3. The date"><span class="peek-kicker">✺ &nbsp; MARK THE DAY</span><strong class="peek-big">07</strong><span class="peek-small-date">NOVEMBER 2026 · SATURDAY</span><p>A day for new memories and old friends.</p><button type="button" data-add-to-calendar>Save to calendar ↗</button></article>
-            <article class="peek-card peek-time" role="group" aria-roledescription="slide" aria-label="2 of 3. The time"><span class="peek-kicker">✦ &nbsp; COME CELEBRATE</span><h3>Six o'clock<br /><em>and onwards.</em></h3><p>Good food. Warm conversations.<br />A home full of laughter.</p><a href="#details">See all the details ↓</a></article>
-            <article class="peek-card peek-place" role="group" aria-roledescription="slide" aria-label="3 of 3. The place"><span class="peek-kicker">❀ &nbsp; YOU'RE WELCOME HERE</span><h3>Our little<br /><em>corner of the world.</em></h3><p>1295 W Giantsbane Dr<br />Meridian, Idaho 83642</p><a target="_blank" rel="noopener noreferrer" href="https://www.google.com/maps/search/?api=1&amp;query=1295+W+Giantsbane+Dr+Meridian+ID+83642">Get directions ↗</a></article>
-          </div>
-        </div>
-        <div class="peek-controls"><div class="peek-dots" aria-label="Choose an invitation highlight"><button type="button" data-peek-index="0" aria-current="true" aria-label="Show date"></button><button type="button" data-peek-index="1" aria-current="false" aria-label="Show time"></button><button type="button" data-peek-index="2" aria-current="false" aria-label="Show address"></button></div><div class="peek-buttons"><button id="peek-prev" type="button" aria-label="Previous highlight" disabled>←</button><button id="peek-next" type="button" aria-label="Next highlight">→</button></div></div>
-      </section>
-
-      <section class="letter-section section-padding" aria-labelledby="letter-title">
-        <div class="letter-ornaments" aria-hidden="true"><img src="assets/bird-left.webp" alt="" /><img src="assets/bird-right.webp" alt="" /></div>
-        <p class="section-eyebrow reveal">A NOTE FROM OUR HOME TO YOURS</p>
-        <h2 id="letter-title" class="letter-title reveal">Every home has a story.<br /><em>Be part of ours.</em></h2>
-        <p class="letter-copy reveal">Our doors are open, our hearts are warm, and the best memories are the ones we make together. We would love to share this happy milestone with you.</p>
-        <div class="letter-line reveal" aria-hidden="true"><span>✷</span></div>
-      </section>
-
-      <section class="details-section section-padding" id="details" aria-labelledby="details-title">
-        <div class="details-heading reveal"><p class="section-eyebrow">MARK YOUR CALENDAR</p><h2 id="details-title">An evening to <em>remember.</em></h2></div>
-        <div class="details-grid">
-          <div class="calendar-art reveal" aria-label="Saturday November 7 2026"><div class="calendar-outer">
-            <span class="calendar-upper">NOVEMBER</span><span class="calendar-day">07</span><span class="calendar-bottom">SATURDAY · 2026</span>
-            <span class="calendar-corner corner-one" aria-hidden="true">✺</span><span class="calendar-corner corner-two" aria-hidden="true">✺</span>
-            <span class="calendar-corner corner-three" aria-hidden="true">✺</span><span class="calendar-corner corner-four" aria-hidden="true">✺</span>
-          </div><p class="calendar-caption">the day we make memories</p></div>
-          <div class="details-description reveal">
-            <div class="detail-row"><span class="detail-number">01</span><div><p class="detail-kicker">THE DAY</p><h3>Saturday, November 7, 2026</h3><p>We can&apos;t wait to celebrate with you.</p></div></div>
-            <div class="detail-row"><span class="detail-number">02</span><div><p class="detail-kicker">THE TIME</p><h3>From 6:00 PM</h3><p>Join us for dinner, laughter and good company.</p></div></div>
-            <div class="detail-row" id="location"><span class="detail-number">03</span><div><p class="detail-kicker">THE PLACE</p><h3>Our new home</h3><p>1295 W Giantsbane Dr<br />Meridian, ID 83642</p><a class="map-link" target="_blank" rel="noopener noreferrer" href="https://www.google.com/maps/search/?api=1&amp;query=1295+W+Giantsbane+Dr+Meridian+ID+83642">Open directions <span aria-hidden="true">↗</span></a></div></div>
-            <button class="calendar-download" id="calendar-download" type="button"><span class="calendar-symbol" aria-hidden="true">▣</span> Add to calendar <span aria-hidden="true">↗</span></button>
-          </div>
-        </div>
-        <div class="gentle-countdown reveal" role="status" aria-live="off"><span class="countdown-lead">UNTIL WE CELEBRATE</span><div class="countdown-cells"><div><strong id="count-days">--</strong><small>DAYS</small></div><i>:</i><div><strong id="count-hours">--</strong><small>HOURS</small></div><i>:</i><div><strong id="count-minutes">--</strong><small>MINUTES</small></div></div></div>
-      </section>
-
-      <div class="sentiment-banner"><p>Some of the best things in life aren&apos;t things. <em>They&apos;re the people who fill our homes.</em></p><span aria-hidden="true">✦ ✧ ✦</span></div>
-
-      <section class="rsvp-section section-padding" id="rsvp" aria-labelledby="rsvp-title">
-        <div class="rsvp-intro reveal">
-          <p class="section-eyebrow">SAVE YOUR SEAT</p>
-          <h2 id="rsvp-title">Will you <em>join us?</em></h2>
-          <p class="rsvp-intro-copy">Our celebration won&apos;t feel complete without you. Let us know if we can look forward to seeing you!</p>
-          <div class="botanical-art" aria-hidden="true"><img src="assets/flower-footer.webp" alt="" /></div>
-          <p class="rsvp-aside-note">With love, from our home to yours.</p>
-        </div>
-        <div class="form-border reveal">
-          <div class="form-panel">
-            <div class="form-heading"><span class="form-motif" aria-hidden="true">✺</span><span class="form-tagline">A LITTLE NOTE FROM YOU</span><h3>Kindly respond</h3><p>We&apos;d love to hear from you.</p></div>
-            <form id="rsvp-form" novalidate>
+<a class="skip" href="#details">Skip to celebration details</a>
+<div class="progress" id="progress" aria-hidden="true"></div>
+<div class="paper-grain" aria-hidden="true"></div>
+<section class="cover" id="cover" aria-labelledby="heroTitle">
+ <div class="sky" aria-hidden="true"></div><span class="cover-flower left" aria-hidden="true">❀</span><span class="cover-flower right" aria-hidden="true">✻</span>
+ <header class="cover-head">
+  <span class="mark"><span class="mark-icon">✺</span> a new chapter</span>
+  <span class="head-right">HOUSEWARMING · 2026</span>
+ </header>
+ <div class="cover-center">
+  <span class="eyebrow cover-eyebrow">✦ &nbsp; You're warmly invited &nbsp; ✦</span>
+  <h1 id="heroTitle">Our door is open.<em>Our hearts are too.</em></h1>
+  <p class="cover-subtitle">A little house, a lot of love, and an evening made sweeter with you in it.</p>
+  <div class="cover-postcard" id="postcard">
+   <p class="postcard-text">✿ &nbsp; OUR LITTLE CORNER OF THE WORLD &nbsp; ✿</p>
+   <img class="house" src="assets/house-illustration.webp" alt="Hand-painted Pattachitra-inspired illustration of our new house decorated with banana plants and flowers" width="1400" height="583" fetchpriority="high">
+   <span class="light-orb" aria-hidden="true"></span>
+   <p class="home-line">Home is where we gather</p>
+  </div>
+  <div class="time-capsules"><span>SATURDAY, NOV 07</span><i>✺</i><span>DINNER AT 6:00 PM</span></div>
+  <div class="cover-actions">
+   <button type="button" class="open-button" data-open-note>Unseal your invitation <span aria-hidden="true">↗</span></button>
+   <button type="button" class="light-button" id="lightHome" aria-pressed="false">✦ Light up our home</button>
+  </div>
+  <p class="silverline">✧ Swipe up to discover ✧</p>
+ </div>
+</section>
+<main class="invite-body">
+ <div class="section-wrap">
+  <section class="story" id="details" aria-labelledby="storyTitle">
+   <div class="story-title"><span class="eyebrow">THE CELEBRATION</span><h2 id="storyTitle">A night to <em>remember.</em></h2><p>Swipe through the details, and save a little spot in your calendar for us.</p></div>
+   <div class="story-strip" aria-hidden="true">✿</div>
+   <p class="swipe-label">Swipe the cards to explore &nbsp; ↔</p>
+   <div class="card-window"><div class="card-track" id="cardTrack" tabindex="0" aria-label="Three event information cards">
+    <article class="story-card card-day"><span class="card-top">✧ THE DAY</span><div><div class="card-big">07<small>NOVEMBER 2026</small></div><p class="card-desc">Saturday. A new chapter worth celebrating.</p></div><button type="button" class="card-action" data-calendar>Add to calendar &nbsp; ↗</button><span class="folk-sun" aria-hidden="true">✺</span></article>
+    <article class="story-card card-time"><span class="card-top">✧ THE TIME</span><div><div class="card-big">6:00<small>PM ONWARDS</small></div><p class="card-desc">Dinner, stories, laughter, and all our favorite people.</p></div><a class="card-action" href="#rsvp">Save your seat &nbsp; ↗</a><span class="folk-sun" aria-hidden="true">❀</span></article>
+    <article class="story-card card-place"><span class="card-top">✧ THE PLACE</span><div><div class="card-big">Our<br>home.</div><p class="card-desc">1295 W Giantsbane Dr<br>Meridian, ID 83642</p></div><a class="card-action" href="https://www.google.com/maps/search/?api=1&amp;query=1295+W+Giantsbane+Dr+Meridian+ID+83642" target="_blank" rel="noopener noreferrer">Get directions &nbsp; ↗</a><span class="folk-sun" aria-hidden="true">✿</span></article>
+   </div></div>
+   <div class="card-controls">
+    <button type="button" class="round-arrow" id="backCard" aria-label="Previous card">‹</button>
+    <span class="dots" role="group" aria-label="Choose a card"><button aria-label="Go to date card" aria-current="true"></button><button aria-label="Go to time card" aria-current="false"></button><button aria-label="Go to location card" aria-current="false"></button></span>
+    <button type="button" class="round-arrow" id="nextCard" aria-label="Next card">›</button>
+    <span id="slideNum" class="swipe-label" style="margin:0">01 / 03</span>
+   </div>
+   <div class="sharing"><button type="button" id="shareInvite">↗ Share this invitation</button><button type="button" data-calendar>▣ Save the date</button></div>
+  </section>
+  <div class="handwritten"><img src="assets/flower-footer.webp" alt="" aria-hidden="true" loading="lazy"><p>"The best memories are made together."</p></div>
+  <section class="rsvp-section" id="rsvp" aria-labelledby="rsvpTitle">
+   <div class="rsvp-intro"><span class="eyebrow">A NOTE FROM YOU</span><h2 id="rsvpTitle">Will you <em>join us?</em></h2><p>It wouldn't be the same without you. Kindly let us know if you can celebrate with us.</p></div>
+   <div class="rsvp-card">
+    <div class="form-heading"><span class="form-motif">✻</span><h3>Kindly respond</h3><p>We'd love to hear from you.</p></div>
+    <form id="rsvp-form" novalidate>
               <input type="hidden" name="_subject" value="Housewarming RSVP · November 7" />
               <input type="hidden" name="event" value="Housewarming · November 7, 2026" />
               <div class="form-field honeypot" aria-hidden="true"><label for="contact-website">Your website</label><input name="website" id="contact-website" autocomplete="off" tabindex="-1" /></div>
@@ -156,21 +310,129 @@
               <button type="submit" class="form-submit" id="rsvp-submit"><span>Send my RSVP</span><span aria-hidden="true">↗</span></button>
               <p class="form-privacy"><span aria-hidden="true">✦</span> Your response goes privately to the host. No account needed.</p>
             </form>
-            <div class="success-state" id="success-state" aria-live="polite" hidden><span class="success-symbol">✿</span><p class="section-eyebrow">RSVP RECEIVED</p><h3 id="success-title">How wonderful!</h3><p id="success-message">Thank you for replying. We're looking forward to celebrating with you.</p><button class="secondary-button" type="button" id="another-rsvp">Send another response <span aria-hidden="true">↗</span></button></div>
-          </div>
-        </div>
-      </section>
+    <div class="success-state" id="success-state" aria-live="polite" hidden><span class="success-symbol">✿</span><p class="section-eyebrow">RSVP RECEIVED</p><h3 id="success-title">How wonderful!</h3><p id="success-message">Thank you for replying. We're looking forward to celebrating with you.</p><button class="secondary-button" type="button" id="another-rsvp">Send another response <span aria-hidden="true">↗</span></button></div>
+   </div>
+  </section>
+ </div>
+</main>
+<footer class="endcap">
+ <img class="flower-footer" src="assets/flower-footer.webp" alt="" aria-hidden="true" loading="lazy">
+ <h2>See you at <em>home.</em></h2>
+ <p>Saturday, November 7 · Dinner at 6:00 PM</p>
+ <div class="fineprint">✦ &nbsp; WITH LOVE AND JOY &nbsp; ✦</div>
+</footer>
+<dialog class="letter-dialog" id="letterDialog" aria-labelledby="letterTitle">
+ <div class="letter-inner">
+  <button class="close-note" type="button" id="closeNote" aria-label="Close invitation">×</button>
+  <img src="assets/folk-arch.webp" alt="" aria-hidden="true">
+  <span class="eyebrow">✦ YOU ARE INVITED ✦</span>
+  <h2 id="letterTitle">A new home.<em>A new chapter.</em></h2>
+  <p>Our doors are open, our hearts are warm, and we'd be delighted to have you celebrate this beautiful beginning with us.</p>
+  <div class="letter-meta">SATURDAY, NOVEMBER 7, 2026<br>DINNER FROM 6:00 PM<br>MERIDIAN, IDAHO</div>
+  <button type="button" class="letter-accept" id="letterRsvp">RSVP to celebrate &nbsp; ↗</button>
+  <div class="letter-signoff">With love, from our home to yours.</div>
+ </div>
+</dialog>
+<div class="mobile-dock" id="mobileDock" aria-hidden="true" inert><span>Our big little day <small id="daysAway">NOV 07 · 6 PM</small></span><a href="#rsvp">Kindly RSVP &nbsp; ↗</a></div>
 
-      <div class="closing-illustration" aria-hidden="true"><img src="assets/flower-footer.webp" alt="" /></div>
-      <footer class="footer"><div class="footer-line"><span>✥</span><span>WITH LOVE AND JOY</span><span>✥</span></div><h2>See you at <em>home.</em></h2><p>Saturday, November 7 · Dinner at 6:00 PM</p><div class="footer-last"><span>A NEW CHAPTER BEGINS</span><a href="#top" class="back-top">Back to top ↑</a></div></footer>
-    </main>
-    <div class="outer-ornament ornament-bottom" aria-hidden="true"><div class="ornament-dots"></div></div>
-  </div>
-  <div class="mobile-rsvp-dock" id="mobile-rsvp-dock" aria-hidden="true" inert><span class="dock-label">A new chapter begins<small>Nov 7 · Dinner at 6:00 PM</small></span><a class="dock-link" href="#rsvp">Kindly RSVP ↗</a></div>
-  <noscript><div style="background:#fff3db;color:#972b31;padding:16px;text-align:center">Please enable JavaScript to use the RSVP form and site animations.</div></noscript>
-  <script src="config.js"></script>
-  <script src="script.js?v=20261025b" defer></script>
-  <script src="rsvp.js?v=20261025b" defer></script>
-  <script src="experience.js?v=20261026b" defer></script>
+<script src="config.js"></script>
+<script src="rsvp.js?v=20261026c" defer></script>
+<script>
+(function(){
+"use strict";
+const $=(s,root=document)=>root.querySelector(s);
+const $$=(s,root=document)=>Array.from(root.querySelectorAll(s));
+const reduced=window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+const cover=$("#cover"),stage=$("#postcard"),light=$("#lightHome");
+const dialog=$("#letterDialog"),openers=$$("[data-open-note]"),close=$("#closeNote");
+function lightHouse(){
+const lit=!stage.classList.contains("lit");stage.classList.toggle("lit",lit);
+light.setAttribute("aria-pressed",String(lit));
+light.textContent=lit?"✦ Our home is glowing":"✦ Light up our home";
+if(lit&&!reduced){
+for(let i=0;i<9;i++){
+ const s=document.createElement("span");s.className="decor-petal";s.textContent=i%2?"✧":"✦";
+ s.style.left=(8+i*10)+"%";s.style.top=(5+i%3*13)+"%";s.style.fontSize=(10+i%3*5)+"px";
+ s.style.setProperty("--drift", ((i%2?-1:1)*(20+i*8))+"px");
+ s.style.animationDuration=(3+i%3)+"s";stage.appendChild(s);setTimeout(()=>s.remove(),4100);
+}
+}
+}
+light?.addEventListener("click",lightHouse);
+stage?.addEventListener("click",(e)=>{if(e.target===stage||e.target.closest(".house"))lightHouse();});
+function closeNote(){
+if(dialog&&dialog.open)dialog.close();
+document.body.style.overflow="";
+}
+openers.forEach(b=>b.addEventListener("click",()=>{
+if(dialog&&typeof dialog.showModal==="function"){dialog.showModal();document.body.style.overflow="hidden";}else{document.getElementById("details").scrollIntoView({behavior:reduced?"auto":"smooth"});}
+}));
+close?.addEventListener("click",closeNote);
+dialog?.addEventListener("click",(e)=>{if(e.target===dialog)closeNote();});
+dialog?.addEventListener("close",()=>{document.body.style.overflow="";});
+$("#letterRsvp")?.addEventListener("click",()=>{closeNote();$("#rsvp").scrollIntoView({behavior:reduced?"auto":"smooth"});});
+function downloadCalendar(){
+const ics=["BEGIN:VCALENDAR","VERSION:2.0","PRODID:-//Housewarming//EN","BEGIN:VEVENT",
+"UID:20261107-housewarming-invite@event","DTSTAMP:"+new Date().toISOString().replace(/[-:]/g,"").replace(/\.\d{3}Z$/,"Z"),
+"DTSTART:20261108T010000Z","DTEND:20261108T030000Z",
+"SUMMARY:Housewarming Celebration",
+"LOCATION:1295 W Giantsbane Dr\, Meridian\, ID 83642",
+"DESCRIPTION:You're invited to our housewarming dinner from 6 PM.",
+"END:VEVENT","END:VCALENDAR",""].join("\r\n");
+const url=URL.createObjectURL(new Blob([ics],{type:"text/calendar;charset=utf-8"}));
+const a=document.createElement("a");a.href=url;a.download="housewarming-nov-7.ics";document.body.appendChild(a);a.click();a.remove();setTimeout(()=>URL.revokeObjectURL(url),1500);
+}
+$$("[data-calendar]").forEach(x=>x.addEventListener("click",downloadCalendar));
+const cards=$$(".story-card"),track=$("#cardTrack"),dots=$$(".dots button");
+let activeCard=0;
+function moveCard(i){const index=Math.max(0,Math.min(cards.length-1,i));cards[index]?.scrollIntoView({behavior:reduced?"auto":"smooth",block:"nearest",inline:"center"});selectCard(index);}
+function selectCard(index){activeCard=index;dots.forEach((d,i)=>d.setAttribute("aria-current",String(i===index)));$("#slideNum").textContent=String(index+1).padStart(2,"0")+" / 03";}
+$("#backCard")?.addEventListener("click",()=>moveCard(activeCard-1));
+$("#nextCard")?.addEventListener("click",()=>moveCard(activeCard+1));
+dots.forEach((d,i)=>d.addEventListener("click",()=>moveCard(i)));
+let slideTimer;
+track?.addEventListener("scroll",()=>{
+ clearTimeout(slideTimer);
+ slideTimer=setTimeout(()=>{
+ const rect=track.getBoundingClientRect();
+ let best=0,delta=Infinity;
+ cards.forEach((c,i)=>{const r=c.getBoundingClientRect(),distance=Math.abs((r.left+r.right)/2-(rect.left+rect.right)/2);if(distance<delta){delta=distance;best=i;}});
+ selectCard(best);
+ },90);
+},{passive:true});
+function updateCount(){
+const now=Date.now(),event=Date.parse("2026-11-07T18:00:00-07:00");
+const left=Math.max(0,event-now),days=Math.floor(left/86400000),hours=Math.floor(left%86400000/3600000);
+const el=$("#daysAway");if(el)el.textContent=left>0?(days+" days "+hours+" hours"):"It's celebration day!";
+}
+updateCount();setInterval(updateCount,60000);
+const progress=$("#progress"),dock=$("#mobileDock"),rsvp=$("#rsvp");
+let ticking=false;
+function scrollUI(){
+ticking=false;
+const body=document.documentElement;
+progress.style.width=(100*Math.min(1,window.scrollY/Math.max(1,body.scrollHeight-window.innerHeight)))+"%";
+if(dock&&cover&&rsvp){
+ const afterHero=cover.getBoundingClientRect().bottom<window.innerHeight*.6;
+ const nearRsvp=rsvp.getBoundingClientRect().top<window.innerHeight-70;
+ const visible=afterHero&&!nearRsvp&&!dialog?.open&&window.innerWidth<820;
+ dock.classList.toggle("is-visible",visible);
+ dock.setAttribute("aria-hidden",String(!visible));
+ if(visible)dock.removeAttribute("inert");else dock.setAttribute("inert","");
+}
+}
+window.addEventListener("scroll",()=>{if(!ticking){ticking=true;requestAnimationFrame(scrollUI);}},{passive:true});
+window.addEventListener("resize",scrollUI);
+dialog?.addEventListener("close",scrollUI);
+scrollUI();
+$("#shareInvite")?.addEventListener("click",async()=>{
+const info={title:"You're invited to our housewarming!",text:"Join us on November 7 at 6 PM to celebrate our new home.",url:window.location.href};
+try{
+if(navigator.share)await navigator.share(info);
+else if(navigator.clipboard){await navigator.clipboard.writeText(info.url);$("#shareInvite").textContent="✓ Invitation link copied";}
+else throw Error("Share unavailable");
+}catch(err){if(err?.name!=="AbortError")$("#shareInvite").textContent="Copy the URL in your address bar";}
+});
+})();</script>
 </body>
 </html>
