@@ -438,5 +438,33 @@ else throw Error("Share unavailable");
 }catch(err){if(err?.name!=="AbortError")$("#shareInvite").textContent="Copy the URL in your address bar";}
 });
 })();</script>
+<style>
+#envelope-intro{position:fixed;inset:0;z-index:9999;background:radial-gradient(circle at 50% 35%,#34576a,#14243a 75%);display:grid;place-items:center;color:#fff0d0;text-align:center;font-family:Georgia,serif;overflow:hidden}
+#envelope-intro[hidden]{display:none} .env-wrap{width:min(86vw,430px)} .env-label{letter-spacing:.17em;font:700 11px Arial;margin-bottom:26px;color:#efce8c}.env-title{font-size:clamp(34px,8vw,54px);margin:0 0 24px;font-weight:400}
+.envelope{position:relative;display:block;width:100%;aspect-ratio:1.5;border:2px solid #dfbd7b;background:#b74a4a;box-shadow:0 22px 50px #0007;touch-action:none;cursor:grab;overflow:visible}
+.envelope:before{content:"";position:absolute;inset:0;background:linear-gradient(33deg,#922c38 49%,transparent 50%),linear-gradient(-33deg,#a3323e 49%,transparent 50%);z-index:3}
+.env-card{position:absolute;left:10%;right:10%;top:10%;height:80%;background:#fff4dd;color:#8a2938;border:4px double #c39858;display:grid;place-items:center;font-size:clamp(24px,6vw,38px);transition:transform .8s ease;z-index:1}
+.env-flap{position:absolute;inset:0;background:#d88c72;clip-path:polygon(0 0,100% 0,50% 55%);transform-origin:top;transition:transform .55s;z-index:4}
+.env-seal{position:absolute;left:50%;top:43%;transform:translate(-50%,-50%);background:#e2bd77;color:#8f2936;border-radius:50%;width:54px;height:54px;display:grid;place-items:center;font-size:28px;z-index:5;box-shadow:0 3px 8px #542b2b80}
+.envelope.open .env-flap{transform:rotateX(180deg)} .envelope.open .env-seal{opacity:0}.envelope.open .env-card{transform:translateY(-70%);z-index:2}
+.env-hint{font:14px Arial;margin-top:24px;color:#f8e6c2}.env-skip{background:none;border:0;color:#ffe2aa;text-decoration:underline;padding:12px;font:14px Arial}
+.env-confetti{position:fixed;top:-20px;z-index:10000;pointer-events:none;animation:envfall 1.7s ease-in forwards}@keyframes envfall{to{transform:translate(var(--dx),100vh) rotate(650deg);opacity:0}}
+.party-truck{margin:25px auto 10px;max-width:350px;overflow:hidden;text-align:center}.truck-scene{position:relative;height:150px;border-bottom:4px solid #d1ad74;background:linear-gradient(#f6e9ca,#fff6e5);border-radius:12px;overflow:hidden}.truck-body{position:absolute;bottom:24px;left:12%;width:65%;height:52px;background:#b13743;border:3px solid #7b2734;border-radius:8px 7px 4px 4px;box-shadow:inset 0 0 0 3px #d69a60}.truck-cab{position:absolute;bottom:24px;left:76%;width:16%;height:45px;background:#daaa6e;border:3px solid #7b2734;border-radius:14px 12px 3px 3px}.truck-cab:before{content:"";position:absolute;top:5px;left:5px;width:65%;height:16px;background:#a7d2d0;border-radius:5px}.wheel{position:absolute;bottom:12px;width:25px;height:25px;background:#283b47;border:4px solid #e9c788;border-radius:50%}.wheel.one{left:23%}.wheel.two{left:74%}.passengers{position:absolute;bottom:68px;left:14%;width:62%;display:flex;justify-content:center;flex-wrap:wrap;gap:0}.passenger{font-size:25px;line-height:28px;animation:hop .6s both}.truck-caption{color:#8c3540;font:italic 20px Georgia;margin:12px 0}.truck-label{position:absolute;bottom:38px;left:18%;color:#ffe8b4;font:700 11px Arial;letter-spacing:.1em}@keyframes hop{from{opacity:0;transform:translateY(-25px)}to{opacity:1;transform:translateY(0)}}@media(prefers-reduced-motion:reduce){.env-confetti{display:none}.env-card,.env-flap{transition:none}.passenger{animation:none}}
+</style>
+<div id="envelope-intro" role="dialog" aria-modal="true" aria-label="Open your invitation">
+ <div class="env-wrap"><p class="env-label">A SPECIAL DELIVERY FOR YOU ✿</p><h1 class="env-title">You're invited home</h1>
+ <button class="envelope" id="envelope-button" aria-label="Open the invitation"><span class="env-card">A new chapter<br>begins ✿</span><span class="env-flap"></span><span class="env-seal">✿</span></button>
+ <p class="env-hint">Drag the envelope upward to open</p><button class="env-skip" id="envelope-open">or tap to open</button></div>
+</div>
+<script>
+(()=>{const intro=document.getElementById('envelope-intro'),env=document.getElementById('envelope-button'),openBtn=document.getElementById('envelope-open');let start=null,opened=false;
+function open(){if(opened)return;opened=true;env.classList.add('open');if(!matchMedia('(prefers-reduced-motion: reduce)').matches){for(let i=0;i<36;i++){let c=document.createElement('span');c.className='env-confetti';c.textContent=['✿','✦','❋','◆'][i%4];c.style.left=(i*37%100)+'%';c.style.color=['#e9bd6b','#f4e3c0','#ba4051','#92b69c'][i%4];c.style.setProperty('--dx',((i%2?1:-1)*(20+i%7*12))+'px');c.style.animationDelay=(i%8*.04)+'s';document.body.append(c);setTimeout(()=>c.remove(),2400)}}
+setTimeout(()=>{intro.hidden=true;document.body.style.overflow='';document.querySelector('main')?.focus({preventScroll:true})},1100)}
+document.body.style.overflow='hidden';env.addEventListener('pointerdown',e=>{start=e.clientY;env.setPointerCapture(e.pointerId)});env.addEventListener('pointerup',e=>{if(start!==null&&start-e.clientY>35)open();start=null});env.addEventListener('click',open);openBtn.addEventListener('click',open);
+const form=document.querySelector('#rsvp-form'),success=document.querySelector('#success-state');if(!form||!success)return;
+let party=1,attending=false;form.addEventListener('submit',()=>{attending=!!document.querySelector('#attend-yes')?.checked;party=Math.max(1,Math.min(8,parseInt(document.querySelector('#party-size')?.value,10)||1))});
+new MutationObserver(()=>{if(success.hidden)return;success.querySelector('.party-truck')?.remove();if(!attending)return;const box=document.createElement('div');box.className='party-truck';box.setAttribute('aria-label',party+' '+(party===1?'person':'people')+' heading to the celebration');box.innerHTML='<div class="truck-scene" aria-hidden="true"><div class="passengers"></div><div class="truck-body"></div><div class="truck-cab"></div><div class="truck-label">TO OUR HOME ✿</div><div class="wheel one"></div><div class="wheel two"></div></div><p class="truck-caption">Your party is on the way! ✿</p>';const people=box.querySelector('.passengers');for(let i=0;i<party;i++){let p=document.createElement('span');p.className='passenger';p.textContent=['🧑🏽','👩🏽','👨🏽','🧑🏻','👩🏿','👨🏻','🧑🏾','👩🏻'][i];p.style.animationDelay=(i*.1)+'s';people.append(p)}success.append(box)}).observe(success,{attributes:true,attributeFilter:['hidden']});
+})();
+</script>
 </body>
 </html>
