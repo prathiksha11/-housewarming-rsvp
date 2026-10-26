@@ -203,7 +203,10 @@
     submit.disabled = true;
     submit.textContent = "Sending your RSVP…";
     try {
-      const response = await fetch(endpoint, { method: "POST", body: data, headers: { Accept: "application/json" }, credentials: "omit" });
+      const token = window.turnstile?.getResponse();
+      if (!token) throw new Error("Please complete the verification before sending.");
+      const payload = {id: crypto.randomUUID(), full_name:name, attending:yes.checked?"yes":"no", party_size:yes.checked?Number($("#party-size").value):0, additional_guest_names:data.get("additional_guest_names")||"", food_preference:data.get("food_preference")||"", message:data.get("message")||"", turnstile_token:token};
+      const response = await fetch("https://housewarming-rsvp.prathiksha11.workers.dev/rsvp", {method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify(payload)});
       if (!response.ok) {
         const details = await response.json().catch(() => ({}));
         const message = Array.isArray(details.errors) ? details.errors.map((item) => String(item.message || "")).filter(Boolean).join("; ") : "";
