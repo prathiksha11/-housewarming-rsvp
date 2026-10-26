@@ -33,17 +33,17 @@ jobs:
         run: |
           python -m pip install --disable-pip-version-check "Pillow==11.3.0"
           mkdir -p dist/assets
-          cp index.html styles.css experience.css script.js experience.js rsvp.js config.js robots.txt .nojekyll dist/
+          cp index.html rsvp.js config.js robots.txt .nojekyll dist/
           python scripts/generate_assets.py
           test -s dist/assets/house-illustration.webp
           test -s dist/assets/folk-arch.webp
-          test -s dist/script.js
+          test -s dist/index.html
           test -s dist/rsvp.js
-          test -s dist/experience.css
-          test -s dist/experience.js
-          # Every interactive asset must be included in the published Pages artifact.
-          grep -q 'experience.css' dist/index.html
-          grep -q 'experience.js' dist/index.html
+          test -s dist/config.js
+          # The cinematic mobile experience is self-contained in index.html.
+          grep -q 'id="letterDialog"' dist/index.html
+          grep -q 'id="cardTrack"' dist/index.html
+          grep -q 'id="rsvp-form"' dist/index.html
 
       - name: Keep artwork in the repository
         run: |
