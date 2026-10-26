@@ -29,6 +29,16 @@ jobs:
         with:
           python-version: "3.12"
 
+      - name: Set up Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+
+      - name: Check RSVP behavior
+        run: |
+          node --check script.js
+          node --test tests/rsvp.test.cjs
+
       - name: Build standalone GitHub Pages site
         run: |
           python -m pip install --disable-pip-version-check "Pillow==11.3.0"
@@ -71,3 +81,4 @@ jobs:
       - name: Publish Pages
         id: deployment
         uses: actions/deploy-pages@v4
+

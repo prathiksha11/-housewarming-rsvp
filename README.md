@@ -23,20 +23,19 @@ The first successful workflow run crops the approved Pattachitra invitation artw
 
 The visible design and animations work immediately after publishing: floating folk-art petals, subtle house-illustration tilt, scroll reveals, a countdown, directions and a downloadable calendar event.
 
-## Turn on real RSVP collection
+## RSVP collection and anonymous live count
 
-GitHub Pages has no database or form storage. Until a working Formspree form is configured, the button deliberately says **RSVP opens soon**, so guests are not given a false submission confirmation.
+The invitation supports the Cloudflare Worker at `https://housewarming-rsvp.prathiksha11.workers.dev` and its private D1 database. Only `GET /count` is public; it returns the sum of party sizes for accepted responses. The website does not request or display the response list, names, dietary details, or messages.
 
-1. Create a Formspree form (https://formspree.io) named **Housewarming RSVP**.
-2. Copy its public endpoint, for example `https://formspree.io/f/abcdefgh`.
-3. Edit `config.js` in this repository:
-   ```js
-   formEndpoint: "https://formspree.io/f/YOUR_FORM_ID",
-   ```
-4. Commit that change. The GitHub Actions workflow automatically republishes the invitation.
-5. Submit a test RSVP and confirm it appears in your Formspree inbox.
+`config.js` selects the provider with `rsvpProvider`: `cloudflare` uses the protected Worker, while `formspree` retains the previous form service. The public Turnstile site key belongs in this file. The **secret key belongs only in the Worker's encrypted `TURNSTILE_SECRET` variable**, never in GitHub.
 
-The RSVP collects a name, optional email, attending/declining, party size, companion names, dietary preferences and optional notes. It shows a success message only after a successful response from the form service.
+The Worker must validate the Turnstile token and hostname before writing an RSVP. It uses the D1 binding `housewarming-rsvp` and the existing `rsvps` table. Acceptances save the full party size; declines save zero. A retry of the same submission keeps its request ID so a network interruption does not insert a second row. A fresh submission or a different device is not deduplicated automatically; review duplicate household replies in the private D1 console.
+
+Responses recorded previously in Formspree remain there and are **not included** in the D1 total until migrated. Do not publish exports or keys to move them. The owner can review responses in Cloudflare's D1 database console; no paid service is needed within the free tier's limits.
+
+Before enabling the provider, open `?rsvp-preview=1#rsvp` on the published invitation to verify the widget and the backend. The preview exposes a connection-check button that submits only a synthetic invalid-token decline to confirm server rejection. It does not count as a real guest.
+
+`node --test tests/rsvp.test.cjs` checks acceptance/decline payloads, verification gating, retry IDs, the anonymous truck count, and network failure handling. GitHub Actions runs these checks before deployment.
 
 ## Files
 
@@ -63,3 +62,4 @@ The invitation has been updated to use solid ivory backgrounds rather than compo
 ## Friendly URL without an account username
 
 GitHub Pages links are always `USERNAME.github.io/REPOSITORY/` unless you configure a custom domain. Renaming this repo to `prithvi` produces `prathiksha11.github.io/prithvi/`, but **does not remove the username**. For a name-only public URL, connect a separately owned domain to GitHub Pages or use a new GitHub account or organization with the preferred name. Do not change CNAME until DNS is ready.
+

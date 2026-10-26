@@ -21,6 +21,18 @@
 <style>.running-ornament,.mini-ticker,.marquee,.ticker{display:none!important}.journey{background:#fbf1dd;padding:70px 20px;text-align:center;color:#182f42}.journey-kicker{color:#a0333d;letter-spacing:.19em;font:700 10px Arial}.journey h2{font:500 clamp(44px,9vw,70px)/1 Georgia;margin:15px auto}.journey h2 em{color:#a0333d}.journey-intro{font:15px/1.7 Arial;color:#62574b}.journey-list{max-width:760px;margin:40px auto 0;display:grid;grid-template-columns:1fr 1fr;gap:20px;text-align:left}.journey-item{background:#fffaf0;border:1px solid #d3b77e;padding:10px;box-shadow:0 6px 18px #50371b16;position:relative}.journey-item img{width:100%;height:240px;object-fit:cover;display:block}.journey-item h3{font:500 27px Georgia;color:#9b3039;margin:15px 8px 5px}.journey-item p{font:13px/1.6 Arial;color:#635a4e;margin:0 8px 13px}.journey-num{position:absolute;top:19px;left:19px;background:#9b3039;color:#fff3d7;padding:9px;font:700 11px Arial}@media(max-width:600px){.journey{padding:55px 18px}.journey-list{grid-template-columns:1fr;gap:20px;max-width:360px}.journey-item img{height:250px}}</style></head>
 <body>
   <a class="skip-link" href="#rsvp">Skip to RSVP</a>
+  <div id="envelope-intro" class="envelope-intro" role="dialog" aria-modal="true" aria-labelledby="envelope-title" hidden>
+    <div class="envelope-intro-inner">
+      <p class="envelope-eyebrow">✿ A LITTLE INVITATION FOR YOU ✿</p>
+      <h2 id="envelope-title">A new chapter.<br><em>Open it with us.</em></h2>
+      <button type="button" id="envelope-control" class="envelope-control" aria-label="Drag up or tap to open your invitation">
+        <span class="envelope-letter"><img src="assets/house-illustration.webp" alt=""><span>You're invited home</span></span>
+        <span class="envelope-front" aria-hidden="true"></span><span class="envelope-flap" aria-hidden="true"></span><span class="envelope-wax" aria-hidden="true">✿</span>
+      </button>
+      <p class="envelope-instruction">Drag upward to unfold your invitation</p>
+      <button type="button" id="envelope-tap" class="envelope-tap">or tap to open ↗</button>
+    </div>
+  </div>
   <div class="site" id="top">
     <div class="running-ornament" aria-hidden="true"><span>✿</span><span>✦</span><span>✿</span><span>✦</span><span>✿</span><span>✦</span><span>✿</span><span>✦</span><span>✿</span><span>✦</span><span>✿</span></div>
     <header class="nav">

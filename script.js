@@ -30,6 +30,47 @@
       setTimeout(() => dot.remove(), 2300);
     }
   };
+  // A drag gesture and an equivalent tap/keyboard action reveal the invitation.
+  const envelope = $("#envelope-intro");
+  const envelopeControl = $("#envelope-control");
+  const site = $("#top");
+  if (envelope && envelopeControl && site && !location.hash && !location.search.includes("rsvp-preview")) {
+    let startY = null;
+    let opened = false;
+    envelope.hidden = false;
+    site.inert = true;
+    document.body.classList.add("invitation-sealed");
+    const openEnvelope = () => {
+      if (opened) return;
+      opened = true;
+      envelope.classList.add("is-open");
+      makePetals(envelope, 42);
+      setTimeout(() => {
+        envelope.hidden = true;
+        site.inert = false;
+        document.body.classList.remove("invitation-sealed");
+        doorButton?.focus({ preventScroll: true });
+      }, reduced ? 0 : 1000);
+    };
+    envelopeControl.addEventListener("pointerdown", (event) => {
+      startY = event.clientY;
+      envelopeControl.setPointerCapture(event.pointerId);
+    });
+    envelopeControl.addEventListener("pointermove", (event) => {
+      if (startY === null || opened) return;
+      envelopeControl.style.setProperty("--flap-angle", -Math.min(145, Math.max(0, startY - event.clientY) * 2) + "deg");
+    });
+    envelopeControl.addEventListener("pointerup", (event) => {
+      if (startY !== null && startY - event.clientY > 40) openEnvelope();
+      startY = null;
+      envelopeControl.style.removeProperty("--flap-angle");
+    });
+    envelopeControl.addEventListener("pointercancel", () => { startY = null; envelopeControl.style.removeProperty("--flap-angle"); });
+    envelopeControl.addEventListener("click", openEnvelope);
+    $("#envelope-tap")?.addEventListener("click", openEnvelope);
+    envelope.addEventListener("keydown", (event) => { if (event.key === "Escape") openEnvelope(); });
+    envelopeControl.focus({ preventScroll: true });
+  }
   if (theatre && doorButton) {
     doorButton.addEventListener("click", () => {
       doorOpen = !doorOpen;
@@ -256,6 +297,21 @@
   updateSharedTotal();
   setInterval(() => { if (!document.hidden) updateSharedTotal(); }, 60000);
   document.addEventListener("visibilitychange", () => { if (!document.hidden) updateSharedTotal(); });
+  // This read-only outcome check is available only on the deployment preview.
+  if (new URLSearchParams(location.search).get("rsvp-preview") === "1" && form) {
+    const checks = document.createElement("details");
+    checks.className = "preview-checks";
+    checks.innerHTML = '<summary>Connection checks (preview only)</summary><button type="button" id="check-protection">Check submission protection</button><p id="protection-result" role="status"></p>';
+    form.after(checks);
+    $("#check-protection").addEventListener("click", async () => {
+      $("#protection-result").textContent = "Checking…";
+      try {
+        const result = await fetch(api + "/rsvp", { method: "POST", credentials: "omit", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ id: "11111111-1111-4111-8111-111111111111", full_name: "TEST unverified decline", attending: "no", party_size: 0, turnstile_token: "invalid-token" }) });
+        const body = await result.json();
+        $("#protection-result").textContent = result.status === 403 ? "PASS: the server rejected an invalid verification token (403)." : "Check returned " + result.status + ": " + (body.error || "Unexpected response");
+      } catch { $("#protection-result").textContent = "Could not reach the verification endpoint."; }
+    });
+  }
   function syncAttendance() {
     if (!extras) return;
     const accepted = !!yes?.checked;
@@ -327,8 +383,8 @@
       form.hidden = true;
       success.hidden = false;
       const first = name.split(/\s+/)[0];
-      $("#success-title").textContent = yes.checked ? "We'll see you there!" : "We'll miss you!";
-      $("#success-message").textContent = yes.checked ? `Thank you, ${first}! We're so glad you'll celebrate with us.` : `Thank you for letting us know, ${first}. Sending you love!`;
+      $("#success-title").textContent = attending ? "We'll see you there!" : "We'll miss you!";
+      $("#success-message").textContent = attending ? `Thank you, ${first}! We're so glad you'll celebrate with us.` : `Thank you for letting us know, ${first}. Sending you love!`;
       success.scrollIntoView({ behavior: reduced ? "instant" : "smooth", block: "center" });
       makePetals(success, 14);
       const party = $("#success-party");
