@@ -221,3 +221,23 @@ h1,h2,h3,p{overflow-wrap:break-word}
 }
 @media(max-width:359px){.hero h1{font-size:51px}.logo-name{font-size:19px}.hero{padding-inline:15px}.date-pill{font-size:9px}.hero-details>p{font-size:18px}.postcard{width:81vw}.postcard-rail{padding-inline:9.5vw}.rsvp-section{padding-inline:19px}.attendance-choice strong{font-size:11px}}
 @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*,*:before,*:after{animation-duration:.001ms!important;transition-duration:.001ms!important;scroll-behavior:auto!important}.theatre.is-open .door-wing{opacity:0;transform:none}}
+
+/* The shared truck reads only an anonymous aggregate; RSVP fields remain private. */
+.attendance-parade { max-width:740px; margin:0 auto 34px; padding:28px 15px; text-align:center; border-block:1px solid #c5a169; }
+.attendance-parade h3 { font:500 clamp(34px,8vw,49px)/1.1 Georgia,serif; color:#8d2738; margin:12px 0 18px; }
+.attendance-parade .overline { font-size:10px; }
+.attendance-trucks { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:10px; max-width:650px; margin:auto; }
+.attendance-trucks:has(>svg:only-child) { grid-template-columns:minmax(0,390px); justify-content:center; }
+.folk-truck { display:block; width:100%; height:auto; max-width:390px; margin:auto; }
+#attendance-count-note { font-size:11px; line-height:1.7; color:#6b5a47; margin:15px auto 0; }
+#attendance-overflow { font:italic 21px Georgia,serif; color:#8d2738; }
+.little-people-icons { width:100%; max-width:340px; margin:0 auto 8px; }
+.little-people { flex-direction:column; text-align:center; }
+.form-submit:disabled { opacity:.55; cursor:wait; }
+.success-party { max-width:340px; margin:20px auto; }
+.success-party p { font:italic 22px Georgia,serif; color:#8d2738; }
+.rsvp-verification { margin:20px 0; max-width:100%; }
+#turnstile-widget { min-height:65px; }
+#verification-status { font-size:12px; line-height:1.6; margin:8px 0; color:#645847; }
+.verification-retry { border:0; border-bottom:1px solid #ae8155; background:transparent; padding:5px 0; color:#8d2738; font-size:12px; }
+@media(max-width:400px) { .attendance-trucks { grid-template-columns:minmax(0,1fr); } }

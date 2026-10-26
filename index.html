@@ -16,7 +16,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600&family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles.css?v=storybook2">
+  <link rel="stylesheet" href="styles.css?v=live-rsvp-1">
   <title>A New Chapter Begins | Housewarming Invitation</title>
 <style>.running-ornament,.mini-ticker,.marquee,.ticker{display:none!important}.journey{background:#fbf1dd;padding:70px 20px;text-align:center;color:#182f42}.journey-kicker{color:#a0333d;letter-spacing:.19em;font:700 10px Arial}.journey h2{font:500 clamp(44px,9vw,70px)/1 Georgia;margin:15px auto}.journey h2 em{color:#a0333d}.journey-intro{font:15px/1.7 Arial;color:#62574b}.journey-list{max-width:760px;margin:40px auto 0;display:grid;grid-template-columns:1fr 1fr;gap:20px;text-align:left}.journey-item{background:#fffaf0;border:1px solid #d3b77e;padding:10px;box-shadow:0 6px 18px #50371b16;position:relative}.journey-item img{width:100%;height:240px;object-fit:cover;display:block}.journey-item h3{font:500 27px Georgia;color:#9b3039;margin:15px 8px 5px}.journey-item p{font:13px/1.6 Arial;color:#635a4e;margin:0 8px 13px}.journey-num{position:absolute;top:19px;left:19px;background:#9b3039;color:#fff3d7;padding:9px;font:700 11px Arial}@media(max-width:600px){.journey{padding:55px 18px}.journey-list{grid-template-columns:1fr;gap:20px;max-width:360px}.journey-item img{height:250px}}</style></head>
 <body>
@@ -122,6 +122,13 @@
 
       <section class="rsvp-section" id="rsvp" aria-labelledby="rsvp-heading">
         <div class="rsvp-header"><span class="overline">WE SAVED YOU A PLACE</span><h2 id="rsvp-heading">Will you <em>join us?</em></h2><p>It won't feel quite like home without you.</p></div>
+        <section class="attendance-parade" id="attendance-parade" aria-labelledby="attendance-total" hidden>
+          <span class="overline">ALL ABOARD FOR OUR NEW HOME</span>
+          <h3 id="attendance-total" aria-live="polite">Loading the guest count…</h3>
+          <div id="attendance-trucks" class="attendance-trucks" role="img" aria-label="Guest trucks"></div>
+          <p id="attendance-overflow"></p>
+          <p id="attendance-count-note">Live total from this RSVP form · names stay private</p>
+        </section>
         <div class="rsvp-panel">
           <div class="rsvp-panel-heading"><span class="seal" aria-hidden="true">✺</span><h3>Kindly respond</h3><p>A little note from you means a lot.</p></div>
           <form id="rsvp-form" novalidate>
@@ -129,7 +136,7 @@
             <input type="hidden" name="event" value="Housewarming · November 7, 2026">
             <div class="honeypot" aria-hidden="true"><label for="contact-website">Your website</label><input name="website" id="contact-website" autocomplete="off" tabindex="-1"></div>
             <div class="form-field"><label for="guest-name">Your full name <span>*</span></label><input name="full_name" id="guest-name" autocomplete="name" maxlength="120" placeholder="What should we call you?" required></div>
-            <div class="form-field"><label for="guest-email">Email address <small>(optional)</small></label><input name="email" type="email" id="guest-email" autocomplete="email" maxlength="150" placeholder="name@example.com"></div>
+            
             <fieldset class="form-attendance"><legend>Will you be there? <span>*</span></legend><div class="attendance-options">
               <label class="attendance-choice" for="attend-yes"><input type="radio" name="attending" value="Yes, I'll be there" id="attend-yes" required><span class="choice-symbol" aria-hidden="true">✿</span><strong>Joyfully accepts</strong><small>Yes, count me in!</small></label>
               <label class="attendance-choice" for="attend-no"><input type="radio" name="attending" value="Sorry, can't make it" id="attend-no"><span class="choice-symbol" aria-hidden="true">✉</span><strong>Regretfully declines</strong><small>Sending my love</small></label>
@@ -141,11 +148,16 @@
               <div class="form-field"><label for="diet">Food preference <small>(optional)</small></label><select name="food_preference" id="diet"><option value="No preference">No preference</option><option value="Vegetarian">Vegetarian</option><option value="Non-vegetarian">Non-vegetarian</option><option value="Vegan">Vegan</option><option value="Halal">Halal</option><option value="Other">Other / mention below</option></select></div>
             </div>
             <div class="form-field"><label for="message">A little note <small>(optional)</small></label><textarea name="message" id="message" maxlength="700" rows="3" placeholder="Food allergies, a wish for the new home, or anything else..."></textarea></div>
+            <div id="rsvp-verification" class="rsvp-verification" hidden>
+              <div id="turnstile-widget"></div>
+              <p id="verification-status" role="status">Checking you're ready to send…</p>
+              <button id="retry-verification" class="verification-retry" type="button">Retry verification</button>
+            </div>
             <div class="form-feedback" id="form-feedback" role="alert" aria-live="polite" hidden></div>
             <button type="submit" class="form-submit" id="rsvp-submit"><span>Send my RSVP</span><span aria-hidden="true">↗</span></button>
             <p class="form-privacy">✧ Your reply goes privately to the hosts. No account needed.</p>
           </form>
-          <div class="success-state" id="success-state" role="status" aria-live="polite" hidden><div class="success-icon" aria-hidden="true">✿</div><p class="overline">RSVP RECEIVED</p><h3 id="success-title">How wonderful!</h3><p id="success-message">We're so happy to hear from you.</p><button type="button" class="another-rsvp" id="another-rsvp">Send another response ↗</button></div>
+          <div class="success-state" id="success-state" role="status" aria-live="polite" hidden><div class="success-icon" aria-hidden="true">✿</div><p class="overline">RSVP RECEIVED</p><h3 id="success-title">How wonderful!</h3><p id="success-message">We're so happy to hear from you.</p><div id="success-party" class="success-party" hidden></div><button type="button" class="another-rsvp" id="another-rsvp">Send another response ↗</button></div>
         </div>
       </section>
 
@@ -155,11 +167,7 @@
   </div>
   <div class="floating-rsvp" id="floating-rsvp" aria-hidden="true" inert><span><b>November 07</b><small>Dinner at 6 PM</small></span><a href="#rsvp">RSVP ↗</a></div>
   <noscript><div class="no-script">The invitation is still here! To RSVP, enable JavaScript in your browser.</div></noscript>
-  <script src="config.js"></script>
-  <script src="script.js?v=storybook2" defer></script>
-<style>.folk-truck{max-width:390px;margin:22px auto;text-align:center;color:#8d2738}.folk-truck svg{display:block;width:100%;height:auto}.folk-truck p{font:italic 19px Georgia;margin:8px 0}.folk-passenger{animation:folk-hop .45s both}@keyframes folk-hop{from{opacity:0;transform:translateY(-15px)}to{opacity:1;transform:translateY(0)}}@media(prefers-reduced-motion:reduce){.folk-passenger{animation:none}}</style><script>
-document.addEventListener('DOMContentLoaded',()=>{const form=document.querySelector('#rsvp-form'),success=document.querySelector('#success-state'),yes=document.querySelector('#attend-yes'),size=document.querySelector('#party-size'),icons=document.querySelector('#little-people-icons');if(!form||!success||!yes||!size)return;
-function truck(n){let people='';for(let i=0;i<n;i++){let x=42+i*28;people+='<g class="folk-passenger" style="animation-delay:'+i*.08+'s" transform="translate('+x+',0)"><circle cx="0" cy="65" r="11" fill="'+['#bc7b4c','#e6a36a','#8a583f','#d1915b'][i%4]+'" stroke="#1d3042" stroke-width="2"/><path d="M-10 63 Q0 45 10 63" fill="#23384a"/><path d="M-13 99 Q-12 75 0 77 Q12 75 13 99" fill="'+['#c53c3e','#e6ba62','#557b69','#315170'][i%4]+'" stroke="#1d3042" stroke-width="2"/><circle cx="-3" cy="65" r="1"/><circle cx="3" cy="65" r="1"/></g>'}return '<div class="folk-truck" role="img" aria-label="'+n+' passengers on their way to the celebration"><svg viewBox="0 0 340 190" xmlns="http://www.w3.org/2000/svg"><rect x="8" y="12" width="324" height="166" fill="#fff2d7" stroke="#b4874f" stroke-width="3"/><path d="M15 20 H325 M15 27 H325 M15 166 H325" stroke="#b03439" stroke-width="3"/><text x="170" y="43" text-anchor="middle" fill="#9e2c38" font-size="14" letter-spacing="3">✿ ON OUR WAY HOME ✿</text>'+people+'<path d="M20 100 H260 V137 H20 Z" fill="#a82f3b" stroke="#203348" stroke-width="4"/><path d="M260 112 H290 L310 126 V137 H260 Z" fill="#d6a652" stroke="#203348" stroke-width="4"/><path d="M273 115 H286 L296 124 H273 Z" fill="#b8d7cf"/><path d="M28 107 H252 M28 130 H252" stroke="#f3c778" stroke-width="2" stroke-dasharray="5 4"/><text x="138" y="124" text-anchor="middle" font-size="15" fill="#ffe4a6">✿ ❋ ✿ ❋ ✿ ❋ ✿</text><circle cx="68" cy="140" r="17" fill="#23384a" stroke="#e6bb71" stroke-width="4"/><circle cx="68" cy="140" r="5" fill="#f9e1ad"/><circle cx="270" cy="140" r="17" fill="#23384a" stroke="#e6bb71" stroke-width="4"/><circle cx="270" cy="140" r="5" fill="#f9e1ad"/></svg><p>Your party is on the way! ✿</p></div>'}
-function preview(){if(icons)icons.innerHTML=truck(Math.max(1,Math.min(8,Number(size.value)||1)))}size.addEventListener('change',preview);yes.addEventListener('change',preview);let accepted=false,count=1;form.addEventListener('submit',()=>{accepted=yes.checked;count=Math.max(1,Math.min(8,Number(size.value)||1))});new MutationObserver(()=>{if(success.hidden)return;success.querySelector('.folk-truck')?.remove();if(accepted)success.insertAdjacentHTML('beforeend',truck(count))}).observe(success,{attributes:true,attributeFilter:['hidden']});preview()});
-</script></body>
+  <script src="config.js?v=live-rsvp-1"></script>
+  <script src="script.js?v=live-rsvp-1" defer></script>
+</body>
 </html>
