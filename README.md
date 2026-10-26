@@ -54,3 +54,12 @@ The RSVP collects a name, optional email, attending/declining, party size, compa
 This is a public repository and published invitation. The full street address can be seen by anyone with the link. The `robots.txt` and `noindex` directives discourage search indexing but **do not restrict access**. Do not commit your guest list, keys, or private response exports.
 
 This website is built with plain HTML, CSS and JavaScript, with no branding or website-builder subscription requirements.
+
+
+## iPhone/mobile display fix (October 25, 2026)
+
+The invitation has been updated to use solid ivory backgrounds rather than composited image blending and masks on Safari. Section text no longer starts invisible while waiting on scroll observers. Mobile type sizes and spacing were tightened, while small decorative animations remain. Styles are cache-busted: refresh the page if you opened the previous version.
+
+## Friendly URL without an account username
+
+GitHub Pages links are always `USERNAME.github.io/REPOSITORY/` unless you configure a custom domain. Renaming this repo to `prithvi` produces `prathiksha11.github.io/prithvi/`, but **does not remove the username**. For a name-only public URL, connect a separately owned domain to GitHub Pages or use a new GitHub account or organization with the preferred name. Do not change CNAME until DNS is ready.

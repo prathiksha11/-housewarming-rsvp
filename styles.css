@@ -409,3 +409,93 @@ a {color:inherit}
 .success-state {position:relative}
 .confetti-bit {position:absolute;width:7px;height:11px;border-radius:1px;pointer-events:none;opacity:0;animation:confetti-throw 1.25s cubic-bezier(.15,.65,.34,1) forwards}
 @keyframes confetti-throw {0%{opacity:1;transform:translate(0,0) rotate(0)}62%{opacity:.9}100%{opacity:0;transform:translate(var(--confetti-x),var(--confetti-y)) rotate(var(--confetti-rotate))}}
+
+/* iPhone Safari and small-screen stabilization: opaque paper, not translucent layers. */
+:root { color-scheme: light; }
+html, body { overflow-x: clip; }
+.site-shell { background-color: #f8f0dd !important; background-image: none !important; isolation: isolate; }
+.hero, .letter-section, .rsvp-section { position: relative; background: #f8f0dd; isolation: isolate; }
+.details-section { background: #f5ebd7; isolation: isolate; }
+.sentiment-banner, .event-ribbon, .footer { isolation: isolate; }
+.form-border, .form-panel { background: #fff8e9; }
+.arch-picture img, .house-figure img, .letter-ornaments img,
+.botanical-art img, .closing-illustration, .closing-illustration img {
+  mix-blend-mode: normal !important;
+  -webkit-mask-image: none !important;
+  mask-image: none !important;
+  filter: none !important;
+}
+/* Never hide text or forms behind asynchronous scroll reveal effects. */
+.js .reveal, .js .reveal.is-visible {
+  opacity: 1 !important; visibility: visible !important;
+  transform: none !important; transition: none !important;
+}
+.hero-copy, .letter-copy, .rsvp-intro-copy { color: #554e43; }
+@media (max-width: 930px) {
+  .js .hero-story .eyebrow, .js .title-one, .js .title-two, .js .red-flourish,
+  .js .hero-subheading, .js .hero-copy, .js .hero-buttons, .js .art-card {
+    animation: none !important; opacity: 1 !important; transform: none !important;
+  }
+  .art-card, .art-card:hover { transform: none !important; }
+  .floating-date { animation: none !important; transform: rotate(5deg) !important; }
+  .stars-layer { display: none; }
+  .petal { will-change: auto; }
+  .hero, .letter-section, .rsvp-section { background-color: #f8f0dd; }
+}
+@media (max-width: 640px) {
+  html { scroll-padding-top: 20px; }
+  .site-shell { width: calc(100% - 12px); margin: 6px auto; overflow: hidden; border-width: 1px;
+    background: #f8f0dd !important; box-shadow: 0 0 0 2px #a32b30, 0 0 0 4px #dfb568; }
+  .nav-bar { min-height: 68px; margin-inline: 15px; gap: 8px; }
+  .brand-text { font-size: 19px; }
+  .hero { padding: 0 17px 28px; }
+  .arch-picture { height: 97px; margin: 0 -9px 8px; }
+  .hero-inner { display: flex; flex-direction: column; gap: 26px; }
+  .hero-story { padding: 0; }
+  .hero-title { font-size: clamp(54px, 13.8vw, 74px); line-height: 1.03; letter-spacing: -.053em; }
+  .title-line { white-space: normal; }
+  .title-two { margin-top: 0; padding-bottom: 5px; }
+  .hero-subheading { font-size: clamp(23px, 7.15vw, 30px); line-height: 1.17; margin: 18px 2px 11px; }
+  .hero-copy { font-size: 13.5px; line-height: 1.8; margin: 0 4px 20px; }
+  .hero-buttons { gap: 6px; }
+  .hero-art { width: 100%; padding: 4px 8px 22px; }
+  .art-card { padding: 23px 5px 16px; border: 3px double #b78a52; box-shadow: 0 5px 14px rgba(58,38,20,.14); }
+  .art-title-top, .art-under { white-space: normal; text-align: center; letter-spacing: .11em; }
+  .house-figure img { width: 100%; height: auto; }
+  .floating-date { width: 72px; height: 86px; right: -6px; bottom: -5px; }
+  .floating-day { font-size: 45px; }
+  .hero-signoff p { font-size: 19px; }
+  .section-padding { padding-inline: 21px; }
+  .letter-section { min-height: 0; padding-top: 64px; padding-bottom: 62px; }
+  .letter-ornaments { display: none; }
+  .letter-title { font-size: clamp(42px, 10.4vw, 60px); line-height: 1.05; margin-bottom: 20px; }
+  .letter-copy { font-size: 13px; line-height: 1.85; }
+  .details-section { padding-top: 68px; padding-bottom: 62px; background: #f5ebd7; }
+  .details-heading { margin-bottom: 34px; }
+  .details-heading h2 { font-size: clamp(46px, 10.5vw, 61px); line-height: 1.02; }
+  .details-grid { gap: 33px; }
+  .calendar-art { max-width: 238px; }
+  .calendar-outer { min-height: 242px; border-width: 7px; box-shadow: 4px 5px 0 #e4cc9e; }
+  .calendar-upper { font-size: 11px; }
+  .calendar-day { font-size: 116px; margin-block: 16px 20px; }
+  .calendar-caption { font-size: 19px; }
+  .detail-row { grid-template-columns: 28px minmax(0, 1fr); gap: 12px; padding: 19px 0 21px; }
+  .detail-row h3 { font-size: 27px; line-height: 1.13; overflow-wrap: anywhere; }
+  .detail-row p:not(.detail-kicker) { font-size: 13px; }
+  .calendar-download { margin: 20px 0 0 40px; padding: 15px 13px; }
+  .gentle-countdown { margin-top: 46px; }
+  .sentiment-banner { padding: 29px 19px 24px; }
+  .sentiment-banner p { font-size: 26px; line-height: 1.25; }
+  .rsvp-section { padding-top: 64px; padding-bottom: 58px; gap: 28px; }
+  .rsvp-intro h2 { font-size: clamp(51px, 12.9vw, 68px); line-height: 1.06; }
+  .rsvp-intro-copy { font-size: 13px; line-height: 1.8; }
+  .botanical-art { max-height: 77px; margin: 17px auto 0; }
+  .form-border, .form-panel { background: #fff8e9 !important; }
+  .form-panel { padding: 26px 18px 30px; }
+  .form-heading h3 { font-size: 47px; }
+  .form-field input, .form-field select, .form-field textarea { font-size: 16px; }
+  .form-feedback { background: #fff0df; }
+  .footer { background: #f4e5c6; padding: 42px 18px 0; }
+  .footer h2 { font-size: clamp(51px, 13vw, 65px); line-height: 1.03; }
+  .footer > p { font-size: 21px; margin-bottom: 40px; }
+}

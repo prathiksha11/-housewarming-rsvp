@@ -6,24 +6,14 @@
   const config = window.HOUSEWARMING_CONFIG || {};
   const nodes = Array.from(document.querySelectorAll(".reveal"));
 
-  if (reduceMotion || !("IntersectionObserver" in window)) {
-    nodes.forEach((node) => node.classList.add("is-visible"));
-  } else {
-    const observer = new IntersectionObserver((entries) => {
-      for (const entry of entries) {
-        if (!entry.isIntersecting) continue;
-        entry.target.classList.add("is-visible");
-        observer.unobserve(entry.target);
-      }
-    }, { threshold: .09, rootMargin: "0px 0px -40px 0px" });
-    nodes.forEach((node) => observer.observe(node));
-  }
+  // Keep text visible immediately. Safari can pause viewport observers in in-app browsers.
+  nodes.forEach((node) => node.classList.add("is-visible"));
 
   if (!reduceMotion) {
     const stage = $(".hero-art");
     if (stage) {
       const petals = ["✿", "❋", "✧", "❦"];
-      const count = innerWidth < 640 ? 7 : 13;
+      const count = innerWidth < 640 ? 3 : 9;
       for (let i = 0; i < count; i++) {
         const el = document.createElement("span");
         el.className = "petal";
