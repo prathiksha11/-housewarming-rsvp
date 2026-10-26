@@ -1,0 +1,164 @@
+/* A little interactive invitation: standalone, mobile-first, no tracking or dependencies. */
+:root { --inv-paper:#f8f0dd; --inv-ink:#1d344d; --inv-red:#972b31; --inv-gold:#c6964d; }
+html { scroll-padding-top: 28px; }
+body { overscroll-behavior-x:none; }
+
+/* Preserve the proven legible Safari surface. */
+.site-shell { background: #f8f0dd !important; isolation:isolate; }
+.hero, .letter-section, .rsvp-section { background:#f8f0dd; position:relative; isolation:isolate; }
+.details-section { background:#f5ebd7; isolation:isolate; }
+.form-border,.form-panel { background:#fff8e9; }
+.js .reveal, .js .reveal.is-visible { opacity:1 !important; visibility:visible !important; transform:none !important; }
+.arch-picture img,.house-figure img,.letter-ornaments img,.botanical-art img { mix-blend-mode:normal !important; -webkit-mask-image:none !important; mask-image:none !important; }
+@media(max-width:930px) {
+ .js .title-one,.js .title-two,.js .red-flourish,.js .hero-subheading,.js .hero-copy,.js .hero-buttons,.js .art-card { animation:none !important; opacity:1 !important; transform:none !important; }
+}
+
+/* A physical invitation guests can actually unfold. */
+.letter-cta {
+  display:flex; align-items:center; justify-content:center; gap:15px;
+  width:max-content; max-width:calc(100% - 24px); margin:23px auto 10px;
+  padding:8px 18px 8px 9px; color:var(--inv-ink); background:#fff8e9;
+  border:1px solid #d2b67c; box-shadow:3px 4px 0 #e7d3a9;
+  font:600 12px/1.35 'DM Sans',sans-serif; text-align:left;
+  transition:transform .2s, box-shadow .2s, border-color .2s;
+}
+.letter-cta:hover, .letter-cta:focus-visible { border-color:var(--inv-red); transform:translateY(-2px); box-shadow:3px 6px 0 #e7d3a9; }
+.letter-cta:active { transform:translateY(1px); }
+.letter-cta .letter-copy-mini { display:flex; flex-direction:column; gap:3px; }
+.letter-copy-mini strong { color:var(--inv-red); font-size:12px; letter-spacing:.045em; }
+.letter-copy-mini small { color:#746652; font-weight:400; font-size:11px; }
+.letter-cta-arrow { color:var(--inv-red); font-size:20px; }
+.envelope-icon { display:block; width:45px; height:32px; position:relative; background:#a73336; border:2px solid #d5a45e; overflow:hidden; flex-shrink:0; }
+.envelope-icon::before { content:""; position:absolute; left:-3px; right:-3px; top:-14px; height:37px; border:2px solid #f5dca6; transform:rotate(0); clip-path:polygon(0 0, 100% 0, 50% 90%); background:#e9c887; transform-origin:top center; transition:transform .45s; }
+.envelope-icon::after { content:"✦"; color:#f5dca6; font-size:14px; position:absolute; left:17px; top:9px; }
+.letter-cta:hover .envelope-icon::before { transform:rotateX(40deg); }
+
+/* Tap the illustrated home for a tiny light-up moment. */
+.house-figure { position:relative; isolation:isolate; }
+.house-figure::after {
+  content:""; position:absolute; inset:0; z-index:1; pointer-events:none; opacity:0;
+  background:radial-gradient(ellipse 18% 29% at 45% 54%,rgba(255,226,139,.32),transparent 95%),
+             radial-gradient(ellipse 12% 27% at 62% 51%,rgba(255,221,127,.35),transparent 95%),
+             radial-gradient(ellipse 12% 25% at 33% 52%,rgba(255,222,121,.32),transparent 95%);
+  transition:opacity .6s ease;
+}
+.art-card.is-lit .house-figure::after { opacity:1; }
+.light-home-button {
+  display:inline-flex; align-items:center; justify-content:center; gap:7px;
+  position:absolute; bottom:3px; left:50%; z-index:7; transform:translateX(-50%);
+  width:max-content; max-width:94%; min-height:38px;
+  color:#fff5dc; background:#263e50; padding:8px 15px; border:1px solid #be9b59;
+  font:700 10px/1.2 'DM Sans',sans-serif; letter-spacing:.065em;
+  box-shadow:0 4px 10px rgba(19,38,50,.15);
+}
+.light-home-button:active { transform:translateX(-50%) scale(.97); }
+.light-home-button[aria-pressed="true"] { background:#a32f31; }
+.light-home-button svg { width:15px; height:15px; fill:#f5c17b; }
+.house-light-message {
+  position:absolute; z-index:9; bottom:49px; left:50%; transform:translate(-50%,8px);
+  pointer-events:none; opacity:0; padding:11px 17px; text-align:center;
+  white-space:nowrap; max-width:90%; color:#fff7e8; background:#9d3035;
+  font:600 12px/1.3 'DM Sans',sans-serif; transition:opacity .25s, transform .25s;
+}
+.house-light-message.show { opacity:1; transform:translate(-50%,0); }
+.house-light-spark { position:absolute; z-index:8; pointer-events:none; font-size:18px; color:#e1b36b; animation:home-spark 850ms ease-out forwards; }
+@keyframes home-spark { 0% { opacity:0; transform:translate(-50%,-50%) scale(.3) rotate(0); } 30% {opacity:1;} 100% {opacity:0; transform:translate(calc(-50% + var(--sx)),calc(-50% + var(--sy))) scale(1.15) rotate(70deg);} }
+
+/* Letter in a modal: accessible native dialog, softly unfolding from below. */
+.invitation-modal {
+  border:2px solid #bc994f; padding:0; margin:auto;
+  width:min(92vw,520px); max-height:min(90dvh,730px); overflow:auto;
+  color:var(--inv-ink); background:#fff6e3; box-shadow:0 25px 90px rgba(0,0,0,.34);
+  overscroll-behavior:contain;
+}
+.invitation-modal::backdrop { background:rgba(18,32,43,.79); }
+.invitation-modal[open] { animation:paper-unfold .5s cubic-bezier(.22,.8,.2,1) both; }
+@keyframes paper-unfold { from { opacity:0; transform:translateY(46px) scale(.94); } to { opacity:1; transform:translateY(0) scale(1); } }
+.note-inner { padding:23px clamp(22px,6vw,46px) 38px; text-align:center; border:8px double #f1dfb5; min-height:100%; }
+.note-topline { display:flex; justify-content:space-between; align-items:center; gap:12px; color:var(--inv-red); font:700 10px/1.3 'DM Sans',sans-serif; letter-spacing:.17em; }
+.note-close { display:grid; place-items:center; width:42px; height:42px; border:1px solid #d4b887; color:var(--inv-red); background:#fff4dc; font-size:25px; line-height:1; }
+.note-arch { width:100%; height:116px; object-fit:cover; object-position:center top; margin:10px auto 10px; }
+.note-seal { display:inline-grid; place-items:center; border:1px solid #c9a06b; border-radius:50%; color:var(--inv-red); font:400 31px Georgia,serif; width:53px; height:53px; margin:0 auto 6px; }
+.note-inner h2 { font:500 clamp(45px,10vw,62px)/.99 'Cormorant Garamond',Georgia,serif; letter-spacing:-.045em; color:var(--inv-ink); margin:12px auto 14px; }
+.note-inner h2 em { color:var(--inv-red); }
+.note-inner p { font:400 14px/1.75 'DM Sans',sans-serif; margin:0 auto 19px; max-width:330px; color:#595449; }
+.note-event-line { border-top:1px solid #d9be8e; border-bottom:1px solid #d9be8e; padding:13px 0; display:flex; flex-wrap:wrap; align-items:center; justify-content:center; gap:7px 19px; font:700 12px/1.5 'DM Sans',sans-serif; letter-spacing:.05em; color:var(--inv-red); }
+.note-actions { display:flex; flex-direction:column; gap:10px; margin:22px auto 0; max-width:275px; }
+.note-actions a { min-height:51px; display:flex; justify-content:center; align-items:center; gap:14px; font:700 12px 'DM Sans',sans-serif; text-decoration:none; }
+.note-primary { background:var(--inv-red); color:#fff8e8; border:1px solid #802028; }
+.note-secondary { background:transparent; border-bottom:1px solid #ceaf76; color:var(--inv-ink); }
+body.dialog-open { overflow:hidden; }
+
+/* Thumb-friendly invitation cards. Native swipe + keyboard/button navigation. */
+.peek-section { display:none; background:#f9eed8; color:var(--inv-ink); border-top:1px solid #dcc29a; border-bottom:1px solid #dcc29a; }
+.peek-header { padding:32px 25px 8px; display:flex; justify-content:space-between; align-items:flex-end; gap:12px; }
+.peek-heading { margin:0; font:500 43px/.97 'Cormorant Garamond',Georgia,serif; letter-spacing:-.03em; }
+.peek-heading em { color:var(--inv-red); }
+.peek-hint { margin:9px 0 0; font:500 11px/1.4 'DM Sans',sans-serif; color:#766453; }
+.peek-position { font:700 11px/1.5 'DM Sans',sans-serif; color:var(--inv-red); letter-spacing:.1em; white-space:nowrap; }
+.peek-window { overflow-x:auto; overflow-y:hidden; -webkit-overflow-scrolling:touch; scrollbar-width:none; scroll-snap-type:x mandatory; overscroll-behavior-x:contain; padding:17px 0 20px; }
+.peek-window::-webkit-scrollbar { display:none; }
+.peek-track { display:flex; align-items:stretch; gap:13px; padding:0 25px; width:max-content; position:relative; }
+.peek-card { width:min(79vw,345px); min-height:292px; flex:0 0 auto; scroll-snap-align:center; position:relative; isolation:isolate; overflow:hidden; padding:27px 25px; border:2px solid #e6c382; color:#fff4dc; background:#902e32; box-shadow:3px 6px 0 #dec798; }
+.peek-card::after { content:"✺"; position:absolute; z-index:-1; top:-66px; right:-33px; font:normal 190px Georgia,serif; color:rgba(255,240,204,.09); }
+.peek-card.peek-time { background:#1f3b4b; }
+.peek-card.peek-place { background:#3e5f49; }
+.peek-kicker { color:#f5d49a; font:700 10px/1.5 'DM Sans',sans-serif; letter-spacing:.22em; }
+.peek-card h3 { font:500 46px/1 'Cormorant Garamond',Georgia,serif; letter-spacing:-.035em; margin:16px 0 10px; }
+.peek-card p { font:400 13px/1.6 'DM Sans',sans-serif; margin:0; color:#fff0d7; }
+.peek-card .peek-big { font:500 91px/.83 'Cormorant Garamond',Georgia,serif; letter-spacing:-.07em; display:block; margin:18px 0 6px; }
+.peek-card .peek-small-date { font:700 11px 'DM Sans',sans-serif; letter-spacing:.14em; color:#f7d5a3; }
+.peek-card a, .peek-card button { position:absolute; bottom:22px; left:25px; border:0; border-bottom:1px solid #ffe1b0; color:#fff4dc; background:transparent; text-decoration:none; font:700 12px/1.5 'DM Sans',sans-serif; padding:8px 0; }
+.peek-card button:active, .peek-card a:active { opacity:.66; }
+.peek-controls { padding:6px 25px 33px; display:flex; align-items:center; justify-content:space-between; }
+.peek-dots { display:flex; align-items:center; gap:10px; }
+.peek-dots button { padding:0; height:10px; width:10px; border-radius:50%; border:1px solid var(--inv-red); background:transparent; transition:width .2s,background .2s,border-radius .2s; }
+.peek-dots button[aria-current="true"] { width:30px; border-radius:8px; background:var(--inv-red); }
+.peek-buttons { display:flex; align-items:center; gap:8px; }
+.peek-buttons button { display:grid; place-items:center; width:44px; height:44px; border:1px solid #ad8b5d; color:var(--inv-red); background:#fff6e5; font-size:20px; }
+.peek-buttons button:disabled { opacity:.35; cursor:default; }
+
+/* A private, live little preview of the number of people selected. */
+.party-preview { display:flex; align-items:center; justify-content:space-between; gap:12px; background:#f6ebd1; border:1px solid #dec99c; margin:-8px 0 21px; padding:11px 14px; font:600 12px/1.4 'DM Sans',sans-serif; color:#704a36; }
+.party-dots { display:flex; gap:4px; flex-shrink:0; }
+.party-dots i { display:block; width:10px; height:10px; background:var(--inv-red); border-radius:50%; animation:seat-pop .3s both; }
+@keyframes seat-pop { from{transform:scale(.3); opacity:0}to{transform:scale(1);opacity:1} }
+
+/* Floating invitation shortcut; placed directly under the body (never clipped by page art). */
+.mobile-rsvp-dock { display:none; }
+
+@media (max-width:930px) {
+  .peek-section { display:block; }
+  .light-home-button { position:relative; bottom:auto; left:auto; transform:none; margin:9px auto 0; }
+  .light-home-button:active { transform:scale(.97); }
+  .house-light-message { bottom:55px; }
+  .mobile-rsvp-dock { position:fixed; bottom:calc(13px + env(safe-area-inset-bottom, 0px)); left:50%; width:min(93%,430px); transform:translate(-50%, calc(110% + 55px)); opacity:0; pointer-events:none; z-index:70; display:flex; align-items:center; justify-content:space-between; gap:9px; padding:7px 8px 7px 16px; background:#fff6e5; border:1px solid #bb9058; box-shadow:0 8px 35px rgba(26,37,44,.24); transition:transform .35s cubic-bezier(.2,.8,.2,1),opacity .25s; }
+  .mobile-rsvp-dock.is-visible { transform:translate(-50%,0); opacity:1; pointer-events:auto; }
+  .dock-label { color:var(--inv-ink); display:flex; flex-direction:column; gap:2px; font:700 12px/1.25 'DM Sans',sans-serif; }
+  .dock-label small { color:#806b4f; font-weight:500; font-size:10px; }
+  .dock-link { text-decoration:none; display:grid; place-items:center; min-width:128px; min-height:48px; padding:9px 14px; background:var(--inv-red); color:white; font:700 12px 'DM Sans',sans-serif; letter-spacing:.05em; }
+}
+@media (max-width:640px) {
+  .letter-cta { width:94%; margin:21px auto 12px; }
+  .invitation-modal { width:calc(100vw - 22px); max-height:calc(100dvh - 20px); }
+  .note-inner { padding-inline:20px; }
+  .note-arch { height:100px; }
+  .peek-header { padding-inline:20px; }
+  .peek-heading { font-size:42px; }
+  .peek-track { padding-inline:20px; }
+  .peek-card { width:min(82vw,340px); min-height:290px; }
+  .peek-controls { padding-inline:20px; }
+  .form-field input,.form-field select,.form-field textarea { font-size:16px !important; }
+}
+@media (prefers-reduced-motion:reduce) {
+  .letter-cta, .envelope-icon::before, .house-figure::after, .house-light-message,
+  .mobile-rsvp-dock, .peek-dots button { transition:none !important; }
+  .invitation-modal[open], .house-light-spark, .party-dots i { animation:none !important; }
+  .peek-window { scroll-behavior:auto !important; }
+}
+
+/* The invitation is ready to unfold right in the opening viewport. */
+.hero-buttons .letter-cta { margin: 7px 0 2px; width:auto; max-width:100%; }
+@media(max-width:930px) { .hero-buttons .letter-cta { margin: 10px auto 0; } }
+

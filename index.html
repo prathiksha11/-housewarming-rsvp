@@ -18,6 +18,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600&family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="styles.css?v=20261025b" />
+  <link rel="stylesheet" href="experience.css?v=20261026a" />
   <title>A New Chapter Begins | Housewarming Invitation</title>
 </head>
 <body>
@@ -48,7 +49,7 @@
             <p class="hero-copy">With warmth in our hearts, we invite you to celebrate this beautiful new beginning. Come make our new house feel like home.</p>
             <div class="hero-buttons">
               <a class="primary-button" href="#rsvp"><span>RSVP to celebrate</span><span class="primary-arrow" aria-hidden="true">↗</span></a>
-              <a class="underlined-link" href="#details">Explore the invitation <span aria-hidden="true">↓</span></a>
+              <button type="button" class="letter-cta" id="open-letter" aria-haspopup="dialog" aria-controls="invitation-letter"><span class="envelope-icon" aria-hidden="true"></span><span class="letter-copy-mini"><strong>Open a little note</strong><small>Tap to unfold your invitation</small></span><span class="letter-cta-arrow" aria-hidden="true">↗</span></button>
             </div>
           </div>
           <div class="hero-art">
@@ -59,15 +60,42 @@
               <figure class="house-figure"><img src="assets/house-illustration.webp" alt="Hand-painted Bengali Pattachitra-inspired artwork of our new two-story home, with banana plants, flowers and a glowing doorway" width="1400" height="583" /></figure>
               <div class="art-under"><span>✦</span><span>HOME IS WHERE WE GATHER</span><span>✦</span></div>
             </div>
+            <button class="light-home-button" id="light-home" type="button" aria-pressed="false" aria-label="Tap to light up our home"><span aria-hidden="true">✦</span><span>Tap to light up our home</span></button>
+            <span class="house-light-message" id="house-light-message" role="status" aria-live="polite"></span>
             <div class="floating-date" aria-label="Saturday November 7, 2026"><span class="floating-month">NOV</span><span class="floating-day">07</span><span class="floating-year">2026</span></div>
           </div>
         </div>
         <div class="hero-signoff"><span class="tiny-sun" aria-hidden="true">☼</span><p>A little space for all our favourite people.</p><span class="tiny-sun" aria-hidden="true">☼</span></div>
+
       </section>
+
+      <dialog class="invitation-modal" id="invitation-letter" aria-labelledby="welcome-title" aria-modal="true">
+        <div class="note-inner">
+          <div class="note-topline"><span>✺ &nbsp; A LITTLE NOTE FOR YOU</span><button class="note-close" id="close-letter" type="button" aria-label="Close invitation">×</button></div>
+          <img class="note-arch" src="assets/folk-arch.webp" alt="" />
+          <span class="note-seal" aria-hidden="true">✽</span>
+          <h2 id="welcome-title">The door is open.<br /><em>Come on in.</em></h2>
+          <p>Every home has a story, and the happiest chapters are written with the people we love. We'd be delighted to celebrate this one with you.</p>
+          <div class="note-event-line"><span>✦ SATURDAY, NOV 7 ✦</span><span>DINNER AT 6:00 PM</span></div>
+          <div class="note-actions"><a href="#rsvp" class="note-primary">Kindly RSVP ↗</a><a href="#details" class="note-secondary">See the details ↓</a></div>
+        </div>
+      </dialog>
 
       <div class="event-ribbon" aria-label="Event quick details">
         <span>Saturday, 07 November</span><i aria-hidden="true">✦</i><span>Dinner from 6:00 PM</span><i aria-hidden="true">✦</i><span>Meridian, Idaho</span>
       </div>
+
+      <section class="peek-section" aria-label="Swipeable housewarming highlights">
+        <div class="peek-header"><div><h2 class="peek-heading">A little <em>peek inside.</em></h2><p class="peek-hint">Swipe through the little details ↔</p></div><span class="peek-position" id="peek-position">01 / 03</span></div>
+        <div class="peek-window" id="peek-window" tabindex="0" role="region" aria-roledescription="carousel" aria-label="Event highlights. Swipe left for the next card.">
+          <div class="peek-track">
+            <article class="peek-card peek-date" role="group" aria-roledescription="slide" aria-label="1 of 3. The date"><span class="peek-kicker">✺ &nbsp; MARK THE DAY</span><strong class="peek-big">07</strong><span class="peek-small-date">NOVEMBER 2026 · SATURDAY</span><p>A day for new memories and old friends.</p><button type="button" data-add-to-calendar>Save to calendar ↗</button></article>
+            <article class="peek-card peek-time" role="group" aria-roledescription="slide" aria-label="2 of 3. The time"><span class="peek-kicker">✦ &nbsp; COME CELEBRATE</span><h3>Six o'clock<br /><em>and onwards.</em></h3><p>Good food. Warm conversations.<br />A home full of laughter.</p><a href="#details">See all the details ↓</a></article>
+            <article class="peek-card peek-place" role="group" aria-roledescription="slide" aria-label="3 of 3. The place"><span class="peek-kicker">❀ &nbsp; YOU'RE WELCOME HERE</span><h3>Our little<br /><em>corner of the world.</em></h3><p>1295 W Giantsbane Dr<br />Meridian, Idaho 83642</p><a target="_blank" rel="noopener noreferrer" href="https://www.google.com/maps/search/?api=1&amp;query=1295+W+Giantsbane+Dr+Meridian+ID+83642">Get directions ↗</a></article>
+          </div>
+        </div>
+        <div class="peek-controls"><div class="peek-dots" aria-label="Choose an invitation highlight"><button type="button" data-peek-index="0" aria-current="true" aria-label="Show date"></button><button type="button" data-peek-index="1" aria-current="false" aria-label="Show time"></button><button type="button" data-peek-index="2" aria-current="false" aria-label="Show address"></button></div><div class="peek-buttons"><button id="peek-prev" type="button" aria-label="Previous highlight" disabled>←</button><button id="peek-next" type="button" aria-label="Next highlight">→</button></div></div>
+      </section>
 
       <section class="letter-section section-padding" aria-labelledby="letter-title">
         <div class="letter-ornaments" aria-hidden="true"><img src="assets/bird-left.webp" alt="" /><img src="assets/bird-right.webp" alt="" /></div>
@@ -138,9 +166,11 @@
     </main>
     <div class="outer-ornament ornament-bottom" aria-hidden="true"><div class="ornament-dots"></div></div>
   </div>
+  <div class="mobile-rsvp-dock" id="mobile-rsvp-dock" aria-hidden="true" inert><span class="dock-label">A new chapter begins<small>Nov 7 · Dinner at 6:00 PM</small></span><a class="dock-link" href="#rsvp">Kindly RSVP ↗</a></div>
   <noscript><div style="background:#fff3db;color:#972b31;padding:16px;text-align:center">Please enable JavaScript to use the RSVP form and site animations.</div></noscript>
   <script src="config.js"></script>
   <script src="script.js?v=20261025b" defer></script>
   <script src="rsvp.js?v=20261025b" defer></script>
+  <script src="experience.js?v=20261026a" defer></script>
 </body>
 </html>
