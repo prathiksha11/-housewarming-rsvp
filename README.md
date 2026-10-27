@@ -8,7 +8,7 @@ A completely independent, animated Bengali Pattachitra-inspired housewarming inv
 
 **Repository:** https://github.com/prathiksha11/-housewarming-rsvp
 
-**Expected public invitation:** https://prathiksha11.github.io/-housewarming-rsvp/
+**Live invitation:** https://prathiksha11.github.io/-housewarming-rsvp/
 
 > The repository name starts with a **hyphen**. Include that hyphen in its URL.
 
@@ -25,7 +25,7 @@ The visible design and animations work immediately after publishing: floating fo
 
 ## RSVP collection and anonymous live count
 
-The invitation supports the Cloudflare Worker at `https://housewarming-rsvp.prathiksha11.workers.dev` and its private D1 database. Only `GET /count` is public; it returns the sum of party sizes for accepted responses. The website does not request or display the response list, names, dietary details, or messages.
+The invitation uses the Cloudflare Worker at `https://housewarming-rsvp.prathiksha11.workers.dev` and its private D1 database. The public read endpoint `GET /count` returns only the sum of party sizes for accepted responses. The website does not request or display the response list, names, dietary details, or messages. `POST /rsvp` accepts new replies only after server-side Turnstile verification.
 
 `config.js` selects the provider with `rsvpProvider`: `cloudflare` uses the protected Worker, while `formspree` retains the previous form service. The public Turnstile site key belongs in this file. The **secret key belongs only in the Worker's encrypted `TURNSTILE_SECRET` variable**, never in GitHub.
 
@@ -33,7 +33,17 @@ The Worker must validate the Turnstile token and hostname before writing an RSVP
 
 Responses recorded previously in Formspree remain there and are **not included** in the D1 total until migrated. Do not publish exports or keys to move them. The owner can review responses in Cloudflare's D1 database console; no paid service is needed within the free tier's limits.
 
-Before enabling the provider, open `?rsvp-preview=1#rsvp` on the published invitation to verify the widget and the backend. The preview exposes a connection-check button that submits only a synthetic invalid-token decline to confirm server rejection. It does not count as a real guest.
+For future backend changes, open `?rsvp-preview=1#rsvp` on the published invitation to verify the widget and the backend. The preview exposes a connection-check button that submits only a synthetic invalid-token decline to confirm server rejection. It does not count as a real guest.
+
+Live verification confirmed that a decline saves successfully without increasing the count, an acceptance for two increases the count by two, and an invalid verification token is rejected. Remove the two clearly labeled synthetic test replies in the private D1 console after verification:
+
+```sql
+DELETE FROM rsvps
+WHERE full_name IN (
+  'TEST RSVP Accept - verification',
+  'TEST RSVP Decline - verification'
+);
+```
 
 `node --test tests/rsvp.test.cjs` checks acceptance/decline payloads, verification gating, retry IDs, the anonymous truck count, and network failure handling. GitHub Actions runs these checks before deployment.
 
@@ -41,9 +51,10 @@ Before enabling the provider, open `?rsvp-preview=1#rsvp` on the published invit
 
 - `index.html`: invitation, event details and form.
 - `styles.css`: ornate folk-art visual styling and responsive animations.
-- `script.js`: petals, hover effects, countdown and calendar download.
-- `rsvp.js`: attendance choices, validation, form submission and thank-you effect.
-- `config.js`: date, location and optional form endpoint.
+- `script.js`: envelope reveal, petals, calendar, protected RSVP form and anonymous truck count.
+- `rsvp.js`: retained legacy form implementation; the current page uses `script.js`.
+- `config.js`: date, location, RSVP provider and public service endpoints.
+- `tests/rsvp.test.cjs`: form payloads, verification gating, retry behavior and anonymous count checks.
 - `scripts/generate_assets.py`: one-time crop and image preservation script.
 - `.github/workflows/deploy.yml`: GitHub Pages automated deployment.
 - `assets/`: illustration images committed during the first successful deployment.

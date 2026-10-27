@@ -1,6 +1,6 @@
 /* Public event settings only. Never put private keys or guest responses here. */
 window.HOUSEWARMING_CONFIG = Object.freeze({
-  rsvpProvider: "formspree",
+  rsvpProvider: "cloudflare",
   rsvpApi: "https://housewarming-rsvp.prathiksha11.workers.dev",
   turnstileSitekey: "0x4AAAAAAFnUjpZblQOxPnFa",
   formEndpoint: "https://formspree.io/f/mwlllwpz",
