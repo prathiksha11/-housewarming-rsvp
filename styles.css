@@ -263,3 +263,35 @@ h1,h2,h3,p{overflow-wrap:break-word}
 .envelope-intro.is-open .envelope-letter { transform:translateY(-70%) rotate(-3deg); box-shadow:0 10px 45px #0005; }
 .envelope-intro.is-open .envelope-instruction,.envelope-intro.is-open .envelope-tap { opacity:0; }
 @media(prefers-reduced-motion:reduce) { .envelope-control * { transition:none!important; } }
+
+/* Keep the opening card clear of the heading as it rises on small screens. */
+.envelope-eyebrow,.envelope-intro h2{transition:opacity .15s ease}
+.envelope-intro.is-open .envelope-eyebrow,.envelope-intro.is-open h2{opacity:0}
+.envelope-flap{backface-visibility:hidden}
+.envelope-intro.is-open .envelope-letter{transform:translateY(-50%) rotate(-2deg)}
+@media(max-height:650px){.envelope-intro{padding:20px 25px}.envelope-intro-inner{width:min(80vw,350px)}.envelope-intro h2{font-size:clamp(34px,8vh,48px);margin:12px 0 24px}.envelope-instruction{margin-top:15px}}
+
+/* The illustrated door itself is the accessible touch and keyboard control. */
+.house-stage>.door-button{position:absolute;inset:0;z-index:3;display:block;width:100%;height:100%;max-width:none;min-height:0;margin:0;padding:0;background:transparent;border:0;outline:0;box-shadow:none;cursor:pointer;touch-action:manipulation}
+.house-stage>.door-button:hover,.house-stage>.door-button:active{background:transparent;transform:none;box-shadow:none}
+.house-stage>.door-button:focus-visible{outline:3px solid #fff3c6;outline-offset:-6px}
+.door-handle{position:absolute;top:48%;width:11px;height:48px;border:2px solid #815126;border-radius:8px;background:linear-gradient(90deg,#aa752e,#ffe1a0 48%,#a47030);box-shadow:0 2px 5px #3b101380}
+.door-left .door-handle{right:10%}.door-right .door-handle{left:10%}
+.stage-caption{margin-top:20px}
+@media(max-width:600px){.door-handle{width:8px;height:34px}}
+
+/* Each choice reveals its own little folk-art celebration. */
+.blessing-scene{position:relative;display:grid;place-items:center;max-width:230px;height:0;margin:0 auto;opacity:0;overflow:visible;transition:height .35s ease,opacity .25s ease,margin .35s ease;pointer-events:none}
+.blessing-scene[data-wish]:not([data-wish=""]){height:116px;margin:22px auto 0;opacity:1}
+.blessing-symbol{display:grid;place-items:center;width:100px;height:100px;border:3px double #f8dc9e;border-radius:50%;background:#fff0ce;color:#a32d3e;font:70px/1 var(--serif);box-shadow:0 0 0 8px #fff0ce1c,0 8px 0 #76202c55}
+.blessing-scene[data-wish="light"] .blessing-symbol{color:#cb8324;background:#fff5c6;box-shadow:0 0 0 8px #ffe29a26,0 0 34px #ffe49c99}
+.blessing-scene[data-wish="love"] .blessing-symbol{color:#ad3045;background:#ffe8dd}
+.blessing-spark{position:absolute;color:#ffe3a3;font-size:24px}.spark-a{left:8%;top:10%}.spark-b{right:8%;top:15%}.spark-c{left:15%;bottom:2%}.spark-d{right:15%;bottom:2%}
+.blessing-scene.is-celebrating .blessing-symbol{animation:blessing-pop .8s cubic-bezier(.16,.8,.24,1) both}
+.blessing-scene.is-celebrating .blessing-spark{animation:blessing-sparkle 1s ease-out both}
+.blessing-scene[data-wish="light"].is-celebrating .blessing-symbol{animation:blessing-sun 1s ease-out both}
+.blessing-scene[data-wish="love"].is-celebrating .blessing-symbol{animation:blessing-heart 1s ease-out both}
+@keyframes blessing-pop{0%{transform:scale(.2) rotate(-25deg);opacity:0}70%{transform:scale(1.12) rotate(8deg)}100%{transform:scale(1)}}
+@keyframes blessing-sun{0%{transform:scale(.2) rotate(-75deg);opacity:0}70%{transform:scale(1.12) rotate(15deg)}100%{transform:scale(1) rotate(0)}}
+@keyframes blessing-heart{0%{transform:scale(.2);opacity:0}45%{transform:scale(1.18)}65%{transform:scale(.92)}85%{transform:scale(1.08)}100%{transform:scale(1)}}
+@keyframes blessing-sparkle{0%{transform:scale(0);opacity:0}60%{transform:scale(1.3);opacity:1}100%{transform:scale(1);opacity:1}}

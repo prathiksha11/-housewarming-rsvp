@@ -50,7 +50,7 @@
         site.inert = false;
         document.body.classList.remove("invitation-sealed");
         doorButton?.focus({ preventScroll: true });
-      }, reduced ? 0 : 1000);
+      }, reduced ? 0 : 1200);
     };
     envelopeControl.addEventListener("pointerdown", (event) => {
       startY = event.clientY;
@@ -76,8 +76,8 @@
       doorOpen = !doorOpen;
       theatre.classList.toggle("is-open", doorOpen);
       doorButton.setAttribute("aria-pressed", String(doorOpen));
-      $("#door-button-copy").textContent = doorOpen ? "Our doors are open!" : "Tap to open our doors";
-      caption.textContent = doorOpen ? "Come in! We've been waiting for you. ✿" : "A little magic is waiting on the other side.";
+      doorButton.setAttribute("aria-label", doorOpen ? "Close the doors" : "Open the doors to reveal our home");
+      caption.textContent = doorOpen ? "Come in! We've been waiting for you. ✿" : "✧ Tap the doors to come inside ✧";
       if (doorOpen) {
         makePetals(petals, 24);
         if (navigator.vibrate) navigator.vibrate(12);
@@ -150,7 +150,15 @@
         void display.offsetWidth;
         display.classList.add("flower-bloom");
       }
-      makePetals(button, 5);
+      const scene = $("#blessing-scene");
+      if (scene) {
+        scene.dataset.wish = button.dataset.wish;
+        scene.querySelector(".blessing-symbol").textContent = { joy: "❀", light: "☀", love: "♥" }[button.dataset.wish] || "✿";
+        scene.classList.remove("is-celebrating");
+        void scene.offsetWidth;
+        scene.classList.add("is-celebrating");
+        makePetals(scene, 12);
+      }
     });
   });
 
