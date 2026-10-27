@@ -40,7 +40,7 @@
     envelope.hidden = false;
     site.inert = true;
     document.body.classList.add("invitation-sealed");
-    const openEnvelope = () => {
+    const openEnvelope = (goToRsvp = false) => {
       if (opened) return;
       opened = true;
       envelope.classList.add("is-open");
@@ -49,7 +49,12 @@
         envelope.hidden = true;
         site.inert = false;
         document.body.classList.remove("invitation-sealed");
-        doorButton?.focus({ preventScroll: true });
+        if (goToRsvp) {
+          location.hash = "rsvp";
+          $("#rsvp")?.scrollIntoView({ behavior: reduced ? "auto" : "smooth" });
+        } else {
+          doorButton?.focus({ preventScroll: true });
+        }
       }, reduced ? 0 : 1200);
     };
     envelopeControl.addEventListener("pointerdown", (event) => {
@@ -66,8 +71,9 @@
       envelopeControl.style.removeProperty("--flap-angle");
     });
     envelopeControl.addEventListener("pointercancel", () => { startY = null; envelopeControl.style.removeProperty("--flap-angle"); });
-    envelopeControl.addEventListener("click", openEnvelope);
-    $("#envelope-tap")?.addEventListener("click", openEnvelope);
+    envelopeControl.addEventListener("click", () => openEnvelope());
+    $("#envelope-tap")?.addEventListener("click", () => openEnvelope());
+    $("#envelope-rsvp")?.addEventListener("click", () => openEnvelope(true));
     envelope.addEventListener("keydown", (event) => { if (event.key === "Escape") openEnvelope(); });
     envelopeControl.focus({ preventScroll: true });
   }
@@ -77,7 +83,7 @@
       theatre.classList.toggle("is-open", doorOpen);
       doorButton.setAttribute("aria-pressed", String(doorOpen));
       doorButton.setAttribute("aria-label", doorOpen ? "Close the doors" : "Open the doors to reveal our home");
-      caption.textContent = doorOpen ? "Come in! We've been waiting for you. ✿" : "✧ Tap the doors to come inside ✧";
+      caption.textContent = doorOpen ? "Welcome in! Scroll down to explore. ↓" : "✧ Tap the doors to open them ✧";
       if (doorOpen) {
         makePetals(petals, 24);
         if (navigator.vibrate) navigator.vibrate(12);

@@ -16,7 +16,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600&family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles.css?v=invitation-magic-1">
+  <link rel="stylesheet" href="styles.css?v=easy-navigation-1">
   <title>A New Chapter Begins | Housewarming Invitation</title>
 <style>.running-ornament,.mini-ticker,.marquee,.ticker{display:none!important}.journey{background:#fbf1dd;padding:70px 20px;text-align:center;color:#182f42}.journey-kicker{color:#a0333d;letter-spacing:.19em;font:700 10px Arial}.journey h2{font:500 clamp(44px,9vw,70px)/1 Georgia;margin:15px auto}.journey h2 em{color:#a0333d}.journey-intro{font:15px/1.7 Arial;color:#62574b}.journey-list{max-width:760px;margin:40px auto 0;display:grid;grid-template-columns:1fr 1fr;gap:20px;text-align:left}.journey-item{background:#fffaf0;border:1px solid #d3b77e;padding:10px;box-shadow:0 6px 18px #50371b16;position:relative}.journey-item img{width:100%;height:240px;object-fit:cover;display:block}.journey-item h3{font:500 27px Georgia;color:#9b3039;margin:15px 8px 5px}.journey-item p{font:13px/1.6 Arial;color:#635a4e;margin:0 8px 13px}.journey-num{position:absolute;top:19px;left:19px;background:#9b3039;color:#fff3d7;padding:9px;font:700 11px Arial}@media(max-width:600px){.journey{padding:55px 18px}.journey-list{grid-template-columns:1fr;gap:20px;max-width:360px}.journey-item img{height:250px}}</style></head>
 <body>
@@ -29,8 +29,9 @@
         <span class="envelope-letter"><img src="assets/house-illustration.webp" alt=""><span>You're invited home</span></span>
         <span class="envelope-front" aria-hidden="true"></span><span class="envelope-flap" aria-hidden="true"></span><span class="envelope-wax" aria-hidden="true">✿</span>
       </button>
-      <p class="envelope-instruction">Drag upward to unfold your invitation</p>
-      <button type="button" id="envelope-tap" class="envelope-tap">or tap to open ↗</button>
+      <button type="button" id="envelope-tap" class="envelope-tap">Open your invitation ✉</button>
+      <p class="envelope-instruction">Tap above, or swipe up on the envelope</p>
+      <button type="button" id="envelope-rsvp" class="envelope-skip">Go straight to RSVP ↓</button>
     </div>
   </div>
   <div class="site" id="top">
@@ -62,14 +63,15 @@
             </button>
             <div class="petal-layer" id="petal-layer" aria-hidden="true"></div>
           </div>
-          <p class="stage-caption" id="stage-caption" role="status" aria-live="polite">✧ Tap the doors to come inside ✧</p>
+          <p class="stage-caption" id="stage-caption" role="status" aria-live="polite">✧ Tap the doors to open them ✧</p>
         </div>
         <div class="hero-details">
           <div class="date-pill"><span>✷</span> SATURDAY <strong>07 NOV</strong> 2026 <span>✷</span></div>
-          <p>Six in the evening · Dinner &amp; togetherness</p>
-          <a href="#rsvp" class="hero-main-cta">Save your seat <span aria-hidden="true">↗</span></a>
+          <p>6:00 PM Mountain Time · Dinner &amp; togetherness</p>
+          <p class="hero-address">1295 W Giantsbane Dr<br>Meridian, ID 83642<br><a href="https://www.google.com/maps/search/?api=1&amp;query=1295+W+Giantsbane+Dr+Meridian+ID+83642" target="_blank" rel="noopener noreferrer">Get directions ↗</a></p>
+          <a href="#rsvp" class="hero-main-cta">RSVP here <span aria-hidden="true">↗</span></a>
         </div>
-        <div class="scroll-hint" aria-hidden="true">A little story awaits <span>↓</span></div>
+        <a class="scroll-hint" href="#invitation">Scroll down to explore our story <span aria-hidden="true">↓</span></a>
       </section>
 
       <div class="mini-ticker" aria-hidden="true"><div class="ticker-track"><span>✿ COME CELEBRATE ✦ GOOD FOOD ✿ NEW MEMORIES ✦ WARM HEARTS ✿ COME CELEBRATE ✦ GOOD FOOD ✿ NEW MEMORIES ✦ WARM HEARTS ✿</span></div></div>
@@ -79,7 +81,7 @@
       <section class="postcards" id="details" aria-labelledby="postcards-heading">
         <div class="section-kicker"><span>✧</span> A LITTLE PEEK INSIDE <span>✧</span></div>
         <h2 id="postcards-heading">Three little things <em>to know.</em></h2>
-        <p class="swipe-instruction">Swipe the illustrated cards <span aria-hidden="true">↔</span></p>
+        <p class="swipe-instruction">Swipe left or use the arrows below to see all three cards <span aria-hidden="true">↔</span></p>
         <div class="postcard-viewport" id="postcard-viewport" tabindex="0" aria-label="Swipeable event detail cards">
           <div class="postcard-rail" id="postcard-rail">
             <article class="postcard postcard-date" id="card-day" aria-roledescription="slide" aria-label="1 of 3, the day">
@@ -181,6 +183,6 @@
   <div class="floating-rsvp" id="floating-rsvp" aria-hidden="true" inert><span><b>November 07</b><small>Dinner at 6 PM</small></span><a href="#rsvp">RSVP ↗</a></div>
   <noscript><div class="no-script">The invitation is still here! To RSVP, enable JavaScript in your browser.</div></noscript>
   <script src="config.js?v=live-rsvp-3"></script>
-  <script src="script.js?v=invitation-magic-1" defer></script>
+  <script src="script.js?v=easy-navigation-1" defer></script>
 </body>
 </html>
