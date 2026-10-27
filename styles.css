@@ -307,3 +307,8 @@ h1,h2,h3,p{overflow-wrap:break-word}
 .scroll-hint{color:#f6dfba;text-decoration:none;min-height:48px;padding:10px;letter-spacing:.08em}
 .swipe-instruction{padding:0 24px;line-height:1.5}
 @media(max-height:650px){.envelope-tap{margin-top:12px;min-height:44px}.envelope-instruction{margin-top:8px}.envelope-skip{margin-top:5px}}
+
+/* Let the invitation lift completely free before the page is revealed. */
+.envelope-intro.is-open .envelope-letter{animation:invitation-pop-out 1.8s cubic-bezier(.2,.7,.2,1) forwards;transition:none}
+@keyframes invitation-pop-out{0%{transform:translateY(0) rotate(0);z-index:2}55%{transform:translateY(-115%) rotate(-2deg);z-index:2}60%{transform:translateY(-120%) rotate(-2deg);z-index:6}80%{transform:translateY(-105%) scale(1.05) rotate(0);z-index:6}100%{transform:translateY(-105%) scale(1.05);z-index:6}}
+@media(prefers-reduced-motion:reduce){.envelope-intro.is-open .envelope-letter{animation:none;transform:translateY(-115%);z-index:6}}

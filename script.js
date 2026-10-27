@@ -55,7 +55,7 @@
         } else {
           doorButton?.focus({ preventScroll: true });
         }
-      }, reduced ? 0 : 1200);
+      }, reduced ? 0 : 2100);
     };
     envelopeControl.addEventListener("pointerdown", (event) => {
       startY = event.clientY;
